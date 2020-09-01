@@ -1,0 +1,12 @@
+[1] Caching X
+[2] Recycler Views
+[3] Adapters
+[4] pagination
+[5] Fragments
+[6] Preferences Manager X
+[7] Writing to folders
+[8] Glide
+[9] Exceptions
+[10] Overall Design X
+[11] Image ViewMode X
+

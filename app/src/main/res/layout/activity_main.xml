@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/MatchMatchLayout"
+    android:orientation="vertical"
+    android:background="@color/lightGrey"
+    android:id="@+id/test"
+    tools:context=".Activites.MainActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        style="@style/WrapMatchLayout"
+        android:background="@color/AcceptBlue"
+        android:id="@+id/toolbar"
+        android:gravity="start"
+        android:padding="@dimen/paddingDefault">
+
+        <LinearLayout
+            style="@style/MatchMatchLayout"
+            android:orientation="horizontal">
+
+        <TextView
+            style="@style/TextView.CenterBlack"
+            android:text="@string/nasa_images"
+            android:gravity="start"
+            android:textAllCaps="true"
+            android:layout_gravity="start|center_vertical"
+            android:layout_weight="1"
+            android:textColor="@color/DeepWhite"
+            android:letterSpacing="0.5"
+            android:fontFamily="serif-monospace"
+            android:textSize="@dimen/PrimaryTextSize"/>
+            <ImageButton
+
+                android:id="@+id/main_search_button"
+                style="@style/Button.Acceptance"
+                android:layout_width="@dimen/normal_icon_height_width"
+                android:layout_height="@dimen/normal_icon_height_width"
+                android:tint="@color/DeepWhite"
+                android:backgroundTint="@color/AcceptBlue"
+                android:layout_gravity="end|center_vertical"
+                android:padding="10dp"
+
+                android:src="@drawable/ic_search_black_24dp" />
+        </LinearLayout>
+    </androidx.appcompat.widget.Toolbar>
+
+
+
+
+    <TextView
+        android:id="@+id/frame_indicator"
+        android:visibility="gone"
+        style="@style/TextView" />
+
+
+    <FrameLayout
+        android:id="@+id/main_fragment"
+        style="@style/MatchMatchLayout" >
+
+
+
+
+
+    </FrameLayout>
+
+</LinearLayout>

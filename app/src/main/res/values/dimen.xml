@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="normalImageHeight">300dp</dimen>
+
+
+    <dimen name="PrimaryTextSize">20sp</dimen>
+    <dimen name="SecondaryTextSize">15sp</dimen>
+
+    <dimen name="marginDefaultLarge">11dp</dimen>
+    <dimen name="marginDefaultNormal">5dp</dimen>
+
+    <dimen name="paddingDefault">4dp</dimen>
+
+</resources>

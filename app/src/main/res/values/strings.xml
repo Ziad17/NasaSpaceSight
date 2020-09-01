@@ -1,0 +1,44 @@
+<resources>
+    <string name="app_name">NasaSpaceSight</string>
+    <string name="exit">Exit</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="search_query">Search Query</string>
+    <string name="title">Title</string>
+    <string name="key_words">Key Words</string>
+    <string name="location">Location</string>
+    <string name="photographer">Photographer</string>
+    <string name="search_by_date">Search By Date</string>
+    <string name="from">From</string>
+    <string name="to">To</string>
+    <string name="the_photographer_s_name_optional">The Photographer\'s Name (Optional)</string>
+    <string name="capturing_location_optional">Capturing Location (Optional)</string>
+    <string name="attached_text_description_optional">Attached Text Description (Optional)</string>
+    <string name="seperated_by_comma_optional">Seperated By Comma \',\' (Optional)</string>
+    <string name="title_of_the_image_optional">Title Of The Image (Optional)</string>
+    <string name="main_search_text_required">Main Search Text (Required)</string>
+    <string name="viewed">Viewed</string>
+    <string name="reset">Reset</string>
+    <string name="search">Search</string>
+    <string name="sorry_something_went_wrong">Sorry, Something Went Wrong!!</string>
+    <string name="description">Description</string>
+    <string name="description_withcomma">Description:</string>
+    <string name="nasaid">NasaID:</string>
+    <string name="capturing_center">Capturing Center:</string>
+    <string name="date_created">Date Created:</string>
+    <string name="photographer_withcomma">Photographer:</string>
+    <string name="download_hq">Download HQ</string>
+    <string name="download_mq">Download MQ</string>
+    <string name="download">Download</string>
+    <string name="download_quality">Download Quality</string>
+    <string name="high">High</string>
+    <string name="normal">Normal</string>
+    <string name="explore_images_from_the_nasa_api_centers">Explore Images From the NASA API Centers</string>
+    <string name="downloading">Downloading...</string>
+    <string name="cancel_downloading">Cancel Downloading</string>
+    <string name="connection_failed">Connection Failed</string>
+    <string name="nasa_images">Nasa Images</string>
+    <string name="explore_millions_of_images_night_sky_stars_planets_and_more">Explore Millions Of Images. \nNight Skies, Stars, Planets And More.</string>
+    <string name="fetching_more_images">Fetching More Images...</string>
+</resources>
