@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<network-security-config xmlns:tools="http://schemas.android.com/tools">
+    <domain-config cleartextTrafficPermitted="true"
+        tools:ignore="NetworkSecurityConfig">
+        <domian includeSubdomains="true">images-assets.nasa.gov</domian>
+    </domain-config>
+</network-security-config>
