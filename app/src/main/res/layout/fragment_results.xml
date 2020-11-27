@@ -3,47 +3,40 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    app:layout_collapseMode="parallax"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    tools:context=".Activites.ResultsFragment">
+    tools:context=".Activites.NIL.ResultsFragmentNIL">
+
+
+
     <LinearLayout
-        style="@style/WrapMatchLayout"
-        android:layout_centerInParent="true"
-        android:id="@+id/offline_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/loading_layout"
+        android:gravity="center"
         android:visibility="gone"
-
-        android:orientation="vertical">
-        <ImageView
-            style="@style/ImageView"
-            android:src="@mipmap/no_connection"
-            android:layout_marginTop="@dimen/paddingDefault"
-            android:layout_width="200dp"
-            android:layout_height="200dp"/>
-        <TextView
-            style="@style/TextView.CenterBlack"
-            android:layout_marginTop="@dimen/paddingDefault"
-            android:text="@string/connection_failed"/>
-        <ImageButton style="@style/Button.Acceptance"
-            android:layout_gravity="center"
-            android:layout_marginTop="@dimen/marginDefaultLarge"
-            android:src="@drawable/ic_refresh_black_24dp"
-            android:tint="@color/DeepWhite"
-            android:id="@+id/reload_results_button"
-            />
-    </LinearLayout>
-
+        android:orientation="vertical"
+        >
     <ProgressBar
         style="@style/ProgressBar"
         android:layout_centerInParent="true"
-        android:visibility="gone"
-        android:id="@+id/loading_layout"/>
+        android:visibility="visible"
+        />
+    </LinearLayout>
+
 
     <ScrollView
-        style="@style/MatchMatchLayout">
+        style="@style/MatchMatchLayout"
+        android:visibility="visible"
+        android:id="@+id/results_layout"
+        >
+
     <LinearLayout
         style="@style/MatchMatchLayout"
-        android:id="@+id/results_layout"
-        android:visibility="gone"
         android:orientation="vertical" >
+
+
     <TextView
         android:id="@+id/search_total_hits"
         style="@style/TextView.CenterBlack"
@@ -52,11 +45,11 @@
         android:padding="@dimen/paddingDefault"
         >
     </TextView>
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_height="match_parent"
-        android:layout_width="match_parent"
-        tools:listitem="@layout/recycle_item_normal_image"
-        android:id="@+id/search_recycleView"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/search_recycleView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:listitem="@layout/recycle_item_normal_image_nil" />
 
         <androidx.recyclerview.widget.RecyclerView
             style="@style/WrapMatchLayout"
@@ -65,9 +58,6 @@
             android:layout_height="match_parent"
             android:id="@+id/page_view"/>
     </LinearLayout>
-
     </ScrollView>
-
-
 
 </RelativeLayout>

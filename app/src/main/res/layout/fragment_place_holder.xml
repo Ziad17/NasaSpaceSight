@@ -2,39 +2,39 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@mipmap/patrick_unsplash"
+    android:background="@mipmap/patrick_unsplashh"
 
     android:backgroundTintMode="add"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Activites.PlaceHolderFragment">
+    tools:context=".Activites.PlaceHolder">
 
 
 
 
-        <TextView
-            style="@style/TextView.StartBlack"
-            android:gravity="start"
-            android:textColor="@color/DeepWhite"
-            android:textSize="30dp"
-            android:fontFamily="monospace"
-            android:layout_gravity="top"
-            android:text="@string/explore_millions_of_images_night_sky_stars_planets_and_more"
-            android:lineSpacingExtra="5dp"
-            android:padding="20dp"
-            android:layout_marginTop="50dp"
-            />
+    <TextView
+        style="@style/TextView.StartBlack"
+        android:gravity="start"
+        android:textColor="@color/primaryTextColor"
+        android:textSize="30dp"
+        android:fontFamily="monospace"
+        android:layout_gravity="top"
+        android:text="@string/explore_millions_of_images_night_sky_stars_planets_and_more"
+        android:lineSpacingExtra="5dp"
+        android:padding="20dp"
+        android:layout_marginTop="50dp"
+        />
 
-        <Button
-            style="@style/Button.Acceptance"
-            android:layout_gravity="center"
-            android:id="@+id/main_search_button_1"
-            android:layout_width="match_parent"
-            android:layout_marginStart="20dp"
-            android:textAllCaps="false"
-            android:textSize="@dimen/PrimaryTextSize"
-            android:padding="20dp"
-            android:text="Begin Search Now"
-            android:layout_marginEnd="20dp"/>
+    <Button
+        style="@style/Button.Acceptance"
+        android:layout_gravity="center"
+        android:id="@+id/main_search_button_1"
+        android:layout_width="match_parent"
+        android:layout_marginStart="20dp"
+        android:textAllCaps="false"
+        android:textSize="@dimen/PrimaryTextSize"
+        android:padding="20dp"
+        android:text="Begin Search Now"
+        android:layout_marginEnd="20dp"/>
 
 </LinearLayout>

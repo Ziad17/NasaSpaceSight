@@ -10,7 +10,7 @@
         android:id="@+id/base_fragment">
     </FrameLayout>
 
-    <ProgressBar
+    <com.deepan.pieprogress.PieProgress
         style="@style/ProgressBar"
         android:visibility="gone"
 

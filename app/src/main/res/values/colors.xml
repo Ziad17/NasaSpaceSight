@@ -1,15 +1,42 @@
-<?xml version="1.0" encoding="utf-8"?>
+<!--?xml version="1.0" encoding="UTF-8"?-->
 <resources>
-    <color name="colorPrimary">#4CA2AA</color>
-    <color name="colorPrimaryDark">#215050</color>
-    <color name="colorAccent">#D81B60</color>
-    <color name="AcceptBlue">#2690C4</color>
-    <color name="DeepWhite">#ffffff</color>
-    <color name="DeepBlack">#000000</color>
-    <color name="grey">#999999</color>
-    <color name="lightGrey">#BEDDDCDC</color>
 
 
 
+    <color name="colorPrimary">@color/colorPrimaryLight</color>
+    <color name="primaryLightColor">@color/primaryLightColorLight</color>
+    <color name="primaryDarkColor">@color/primaryDarkColorLight</color>
+    <color name="secondaryColor">@color/secondaryColorLight</color>
+    <color name="secondaryLightColor">@color/secondaryLightColorLight</color>
+    <color name="secondaryDarkColor">@color/secondaryDarkColorLight</color>
+    <color name="primaryTextColor">@color/primaryTextColorLight</color>
+    <color name="secondaryTextColor">@color/secondaryTextColorLight</color>
+
+
+
+    <color name="Transpert">#00FFFFFF</color>
+
+    <!-- Light Theme-->
+    <color name="colorPrimaryLight">#311a91</color>
+    <color name="primaryLightColorLight">#6745c2</color>
+    <color name="primaryDarkColorLight">#311a91</color>
+    <color name="secondaryColorLight">#311a91</color>
+    <color name="secondaryLightColorLight">#6745c2</color>
+    <color name="secondaryDarkColorLight">#000062</color>
+    <color name="primaryTextColorLight">#ffffff</color>
+    <color name="secondaryTextColorLight">#ffffff</color>
+
+
+
+    <!-- Dark Theme-->
+    <!--<color name="colorPrimaryDark"></color>
+    <color name="primaryLightColorDark"></color>
+    <color name="primaryDarkColorDark"></color>
+    <color name="secondaryColorDark"></color>
+    <color name="secondaryLightColorDark"></color>
+    <color name="secondaryDarkColorDark"></color>
+    <color name="primaryTextColorDark"></color>
+    <color name="secondaryTextColorDark"></color>
+-->
 
 </resources>

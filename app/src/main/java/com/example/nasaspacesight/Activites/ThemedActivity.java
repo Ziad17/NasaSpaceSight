@@ -8,13 +8,14 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import com.deepan.pieprogress.PieProgress;
 import com.example.nasaspacesight.R;
 
 public abstract class ThemedActivity extends AppCompatActivity implements ContextWithInitiativeBehavior {
 
     protected String TAG;
 
-    ProgressBar progressBar;
+    PieProgress progressBar;
     @Override
     public void setContentView(int layoutResID) {
         ConstraintLayout constraintLayout=(ConstraintLayout) getLayoutInflater().inflate(R.layout.activity_themed,null);
@@ -23,9 +24,6 @@ public abstract class ThemedActivity extends AppCompatActivity implements Contex
 
         getLayoutInflater().inflate(layoutResID,frameLayout,true);
         super.setContentView(constraintLayout);
-
-
-
 
         init();
 

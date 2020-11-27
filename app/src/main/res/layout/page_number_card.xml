@@ -2,15 +2,17 @@
 <LinearLayout style="@style/WrapWrapLayout"
     android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android">
-<Button android:layout_height="24dp"
+<com.google.android.material.button.MaterialButton android:layout_height="40dp"
     android:layout_width="wrap_content"
-    android:textColor="@color/AcceptBlue"
     android:id="@+id/page_number_button"
-    android:paddingStart="2dp"
     android:layout_margin="@dimen/marginDefaultNormal"
-    android:paddingEnd="2dp"
-    android:padding="0dp"
-    android:background="@drawable/page_card_text_view">
+    android:paddingLeft="4dp"
+    android:paddingRight="4dp"
+    android:paddingTop="2dp"
+    android:paddingBottom="2dp"
 
-</Button>
+
+   >
+
+</com.google.android.material.button.MaterialButton>
 </LinearLayout>

@@ -3,7 +3,6 @@
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="5dp"
-    app:titleTextColor="@color/DeepWhite"
-    android:background="@color/AcceptBlue"
+    android:background="@color/colorPrimary"
     app:layout_scrollFlags="scroll|enterAlways"
     xmlns:android="http://schemas.android.com/apk/res/android" />

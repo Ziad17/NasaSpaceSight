@@ -3,175 +3,129 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activites.SearchFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Activites.NIL.SearchDialogNIL">
 
 
     <LinearLayout
         style="@style/MatchMatchLayout"
         android:padding="@dimen/marginDefaultNormal"
-        android:orientation="vertical">
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_marginBottom="10dp">
 
-        <Button
-            android:id="@+id/exit_button"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_gravity="end"
-            android:background="@drawable/ic_close_black_24dp" />
 
-        <LinearLayout
-            style="@style/WrapMatchLayout"
-            android:layout_marginTop="@dimen/marginDefaultNormal"
-            android:orientation="horizontal">
-
-            <TextView
-                style="@style/TextView"
-                android:layout_width="0dp"
-                android:layout_weight="0.3"
-                android:text="@string/search_query" />
-
-            <EditText
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_marginBottom="10dp"
+            android:hint="@string/main_search_text_required"
+            android:layout_height="wrap_content">
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/query"
-                style="@style/EditText"
-                android:layout_width="0dp"
-                android:padding="10dp"
+                android:textColor="@color/colorPrimary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                 />
+        </com.google.android.material.textfield.TextInputLayout>
 
-                android:layout_weight="0.7"
-                android:hint="@string/main_search_text_required" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_marginTop="@dimen/marginDefaultNormal"
-
-            style="@style/WrapMatchLayout"
-            android:orientation="horizontal">
-
-            <TextView
-                style="@style/TextView.CenterBlack"
-                android:layout_width="0dp"
-                android:layout_weight="0.3"
-
-                android:text="@string/title" />
-
-            <EditText
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_marginBottom="10dp"
+            android:hint="@string/title_of_the_image_optional"
+            android:layout_height="wrap_content">
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/title_search"
-                style="@style/EditText"
-                android:layout_width="0dp"
-                android:padding="10dp"
+                android:layout_width="match_parent"                android:textColor="@color/colorPrimary"
 
-                android:layout_weight="0.7"
-                android:hint="@string/title_of_the_image_optional"
-
+                android:layout_height="wrap_content"
                 />
-
-        </LinearLayout>
-
-        <LinearLayout
-            style="@style/WrapMatchLayout"
-            android:layout_marginTop="@dimen/marginDefaultNormal"
-
-            android:orientation="horizontal">
-
-            <TextView
-                style="@style/TextView.CenterBlack"
-                android:layout_width="0dp"
-                android:layout_weight="0.3"
-
-                android:text="@string/key_words" />
-
-            <EditText
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_marginBottom="10dp"
+            android:hint="@string/seperated_by_comma_optional"
+            android:layout_height="wrap_content">
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/keywords"
-                style="@style/EditText"
-                android:layout_width="0dp"
-                android:padding="10dp"
+                android:layout_width="match_parent"                android:textColor="@color/colorPrimary"
 
-                android:layout_weight="0.7"
-                android:hint="@string/seperated_by_comma_optional" />
+                android:layout_height="wrap_content"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        </LinearLayout>
 
-        <LinearLayout
-            style="@style/WrapMatchLayout"
-            android:layout_marginTop="@dimen/marginDefaultNormal"
-
-            android:orientation="horizontal">
-
-            <TextView
-                style="@style/TextView.CenterBlack"
-                android:layout_width="0dp"
-                android:layout_weight="0.3"
-                android:text="@string/description" />
-
-            <EditText
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_marginBottom="10dp"
+            android:hint="@string/attached_text_description_optional"
+            android:layout_height="wrap_content">
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/description"
-                android:padding="10dp"
+                android:layout_width="match_parent"                android:textColor="@color/colorPrimary"
 
-                style="@style/EditText"
-                android:layout_width="0dp"
-                android:layout_weight="0.7"
+                android:layout_height="wrap_content"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
 
-                android:hint="@string/attached_text_description_optional" />
 
-        </LinearLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_marginBottom="10dp"
+            android:hint="@string/capturing_location_optional"
+            android:layout_height="wrap_content">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/location"                android:textColor="@color/colorPrimary"
 
-        <LinearLayout
-            style="@style/WrapMatchLayout"
-            android:layout_marginTop="@dimen/marginDefaultNormal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
 
-            android:orientation="horizontal">
 
-            <TextView
-                style="@style/TextView.CenterBlack"
-                android:layout_width="0dp"
-                android:layout_weight="0.3"
-                android:text="@string/location" />
 
-            <EditText
-                android:id="@+id/location"
-                style="@style/EditText"
-                android:layout_width="0dp"
-                android:layout_weight="0.7"
-                android:padding="10dp"
-
-                android:hint="@string/capturing_location_optional" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            style="@style/WrapMatchLayout"
-            android:layout_marginTop="@dimen/marginDefaultNormal"
-
-            android:orientation="horizontal">
-
-            <TextView
-                style="@style/WrapWrapLayout"
-                android:layout_width="0dp"
-                android:layout_weight="0.3"
-                android:text="@string/photographer" />
-
-            <EditText
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_marginBottom="10dp"
+            android:hint="@string/the_photographer_s_name_optional"
+            android:layout_height="wrap_content">
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/photographer_name"
-                style="@style/EditText"
-                android:layout_width="0dp"
-                android:padding="10dp"
+                android:layout_width="match_parent"                android:textColor="@color/colorPrimary"
 
-                android:layout_weight="0.7"
-                android:hint="@string/the_photographer_s_name_optional" />
+                android:layout_height="wrap_content"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        </LinearLayout>
 
-        <CheckBox
+        <com.google.android.material.checkbox.MaterialCheckBox
             android:id="@+id/date_search"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:text="@string/search_by_date" />
 
         <LinearLayout
             android:id="@+id/date_search_layout"
             style="@style/WrapMatchLayout"
             android:layout_marginTop="@dimen/marginDefaultNormal"
-
             android:orientation="horizontal">
 
             <TextView
@@ -189,7 +143,7 @@
                 android:layout_marginStart="@dimen/paddingDefault"
 
                 android:layout_height="match_parent"
-                style="@style/Spinners" />
+               />
 
             <TextView
                 style="@style/TextView.CenterBlack"
@@ -198,7 +152,6 @@
                 android:text="@string/to" />
 
             <Spinner
-                style="@style/Spinners"
                 android:layout_marginEnd="@dimen/paddingDefault"
                 android:layout_marginStart="@dimen/paddingDefault"
                 android:padding="@dimen/paddingDefault"
@@ -217,22 +170,24 @@
             android:gravity="center"
             android:orientation="horizontal">
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/reset_button"
                 android:layout_width="match_parent"
-                style="@style/Button"
+android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/marginDefaultNormal"
-
                 android:layout_weight="1"
-                android:text="@string/reset" />
+                android:text="@string/reset"             android:textAllCaps="false"
+                />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
 
                 android:layout_weight="1"
                 android:layout_marginStart="@dimen/marginDefaultNormal"
                 android:layout_width="match_parent"
+
+android:layout_height="wrap_content"
+                android:textAllCaps="false"
                 android:id="@+id/button_search"
-                style="@style/Button.Acceptance"
                 android:text="@string/search" />
 
         </LinearLayout>

@@ -2,23 +2,33 @@ package com.example.nasaspacesight.Repository;
 
 import androidx.lifecycle.LiveData;
 
-import com.example.nasaspacesight.ApiData.NasaClient;
-import com.example.nasaspacesight.POJO.Collection;
-import com.example.nasaspacesight.POJO.ImageLinks;
-import com.example.nasaspacesight.POJO.Item;
+import com.example.nasaspacesight.ApiData.APOD.ApodClient;
+import com.example.nasaspacesight.ApiData.Images.ImagesClient;
+import com.example.nasaspacesight.POJO_APOD.SingleApodResponse;
+import com.example.nasaspacesight.POJO_NIL.Collection;
+import com.example.nasaspacesight.POJO_NIL.ImageLinks;
+import com.example.nasaspacesight.POJO_NIL.Item;
+import com.example.nasaspacesight.POJO_NIL.ItemOffline;
+import com.example.nasaspacesight.Room.RoomClient;
+import com.example.nasaspacesight.Room.RoomDatabase;
+import com.example.nasaspacesight.ViewModels.DataWrapper;
 
-import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 public class MainImageSearchRepo {
 
     private static volatile MainImageSearchRepo mainImageSearchRepo;
-    private NasaClient nasaClient;
+    private ImagesClient imagesClient;
+    private ApodClient apodClient;
+    private RoomClient roomDatabaseOperations;
 
 
     private MainImageSearchRepo()
     {
-        nasaClient=NasaClient.getInstance();
-
+        imagesClient = ImagesClient.getInstance();
+        apodClient=ApodClient.getInstance();
+        roomDatabaseOperations=RoomClient.getInstance();
     }
 
     public static MainImageSearchRepo getInstance()
@@ -32,28 +42,94 @@ public class MainImageSearchRepo {
         }
         return mainImageSearchRepo;
     }
-    public LiveData<Collection> getItems()
+    public LiveData<DataWrapper<Collection>> NILgetItems()
     {
-        return nasaClient.getItems();
+        return imagesClient.getItems();
     }
 
-    public void SearchForImagesString(String textQuery, String keyWordsSplitByComma, String description, String location, String nasaId, String photographer, String title, Integer year_start, Integer year_end, Integer pageNumber)
-    {
-        nasaClient.SearchForImages(textQuery,keyWordsSplitByComma,description,location,nasaId,photographer,title,year_start,year_end,pageNumber);
+    public void NILSearchForImagesString(Map<String,Object> map) {
+        imagesClient.SearchForImages(map);
     }
 
-    public void SearchForImagesString(String textQuery, String keyWordsSplitByComma, String description, String location, String nasaId, String photographer, String title, Integer pageNumber) {
-        nasaClient.SearchForImages(textQuery,keyWordsSplitByComma,description,location,nasaId,photographer,title,pageNumber);
-
-    }
-
-
-    public void searchLinksOfItem(String href)
+    public void NILSearchLinksOfItem(String href)
     {
-        nasaClient.searchLinksOfItem(href);
+        imagesClient.searchLinksOfItem(href);
     }
 
     public LiveData<ImageLinks> getLinksOfItem() {
-        return nasaClient.getLinksOfItem();
+        return imagesClient.getLinksOfItem();
+    }
+
+
+
+
+
+    public LiveData<DataWrapper<List<SingleApodResponse>>> APODgetItems()
+    {
+        return apodClient.getItems();
+    }
+
+    public void APODsearchForImages(Map<String,Object> map)
+    {
+        apodClient.searchForImages(map);
+
+    }
+
+
+    public void saveImage(Item image,RoomDatabase database)
+    {
+        roomDatabaseOperations.insert(image,database);
+    }
+    public void removeImage(Item image,RoomDatabase database)
+    {
+        roomDatabaseOperations.delete(image,database);
+
+    }
+    public void saveImage(SingleApodResponse image,RoomDatabase database)
+    {
+        roomDatabaseOperations.insert(image,database);
+
+    }
+    public void removeImage(SingleApodResponse image,RoomDatabase database)
+    {
+        roomDatabaseOperations.delete(image,database);
+
+    }
+    public LiveData<DataWrapper<List<Item>>> getNILcache()
+    {
+        return roomDatabaseOperations.getArrayNIL() ;
+    }
+    public LiveData<DataWrapper<List<SingleApodResponse>>> getAPODcache()
+    {
+        return roomDatabaseOperations.getArrayAPOD() ;
+    }
+
+
+    public void requestNILcache(RoomDatabase database)
+    {
+        roomDatabaseOperations.searchCacheNIL(database);
+    }
+    public void requestAPODcache(RoomDatabase database)
+    {
+        roomDatabaseOperations.searchCacheAPOD(database);
+    }
+
+    public void checkAPODItem(String date, RoomDatabase database)
+    {
+         roomDatabaseOperations.checkAPODItem(date,database);
+
+    }
+    public LiveData<SingleApodResponse> getAPODItem()
+    {
+        return roomDatabaseOperations.getItemAPOD();
+    }
+    public LiveData<ItemOffline> getNILItem()
+    {
+        return roomDatabaseOperations.getItemNIL();
+    }
+
+    public void checkNILItem(String nasa_id,RoomDatabase database) {
+         roomDatabaseOperations.checkNILItem(nasa_id,database);
+
     }
 }

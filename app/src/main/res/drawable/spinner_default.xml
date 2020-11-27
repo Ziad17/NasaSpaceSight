@@ -5,11 +5,12 @@
 
         <layer-list>
 
-            <item android:drawable="@drawable/edittext_default">
+            <item >
             </item>
 
                 <item android:drawable="@drawable/ic_arrow_drop_down_black_24dp"
-                    android:gravity="end">
+                    android:gravity="end"
+                    >
                 </item>
         </layer-list>
 

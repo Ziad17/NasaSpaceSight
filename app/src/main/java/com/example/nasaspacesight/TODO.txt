@@ -1,12 +1,32 @@
 [1] Caching X
-[2] Recycler Views
-[3] Adapters
-[4] pagination
-[5] Fragments
-[6] Preferences Manager X
-[7] Writing to folders
-[8] Glide
-[9] Exceptions
-[10] Overall Design X
-[11] Image ViewMode X
+
+
+steps for caching(Not Implemented yet)
+
+(A)image portion
+1- preparing the model classes to fit room model objects
+2- enable save and deleting for nil and apod images
+3- creating an offline browsing fragment
+4- including the option to whether to cache the image(high or med quality)
+5- if the previous option is selected then downloading the image is supported
+6- when requesting new queries over from apis it has to check whether the image is cached or not (check if it causes performance issues)
+
+
+(B)Search History
+1- construct search model class
+2- including the history in history fragment to be browsed again
+3- the ability to conduct the search over google
+
+
+
+[2] Recycler Views  >>DONE
+[3] Adapters  >>DONE
+[4] pagination  >>DONE
+[5] Fragments  >>DONE
+[6] Preferences Manager X     wifi or 4g  for viewing and downloading
+[7] Writing to folders  >>DONE
+[8] Glide  >>DONE
+[9] Exceptions  >>DONE
+[10] Overall Design >>DONE
+[11] Image ViewMode >>DONE
 

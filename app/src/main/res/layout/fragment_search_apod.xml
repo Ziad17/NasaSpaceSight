@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Activites.NIL.SearchDialogNIL">
+
+
+    <LinearLayout
+        style="@style/MatchMatchLayout"
+        android:padding="@dimen/marginDefaultNormal"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_marginBottom="10dp">
+
+
+
+
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/single_date"
+                android:layout_height="wrap_content"
+                android:text="@string/single_date"/>
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+
+
+                android:layout_gravity="end"
+                android:layout_height="wrap_content"
+                android:id="@+id/multi_date"
+                android:text="@string/range_date"/>
+        </RadioGroup>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_marginBottom="10dp"
+                android:id="@+id/start_date_picker_parent"
+
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+
+                    android:text="@string/start_date"/>
+                <TextView
+                    android:padding="10dp"
+                    android:id="@+id/start_date_picker"
+                    android:text="@string/click_to_choose_date"
+                    android:layout_width="match_parent"
+                    android:inputType="none"
+                    android:background="@drawable/image_holder"
+                    android:layout_height="wrap_content"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_marginBottom="10dp"
+                android:id="@+id/end_date_picker_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+
+                    android:text="@string/end_date"/>
+                <TextView
+                    android:id="@+id/end_date_picker"
+                    android:inputType="none"
+                    android:background="@drawable/image_holder"
+
+                    android:text="@string/click_to_choose_date"
+                    android:layout_width="match_parent"
+                    android:padding="10dp"
+                    android:layout_height="wrap_content"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+        <LinearLayout
+            style="@style/WrapMatchLayout"
+            android:layout_gravity="bottom"
+            android:layout_marginTop="@dimen/marginDefaultLarge"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/reset_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/marginDefaultNormal"
+                android:layout_weight="1"
+                android:text="@string/reset"             android:textAllCaps="false"
+                />
+
+            <com.google.android.material.button.MaterialButton
+
+                android:layout_weight="1"
+                android:layout_marginStart="@dimen/marginDefaultNormal"
+                android:layout_width="match_parent"
+
+                android:layout_height="wrap_content"
+                android:textAllCaps="false"
+                android:id="@+id/button_search"
+                android:text="@string/search" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>
