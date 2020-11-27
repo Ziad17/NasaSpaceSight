@@ -8,7 +8,7 @@ Android application written in java that represents the free NASA image API to v
 # Screenshots
 
 
-![Alt text](/NSS REP/2020_11_27_03.13.45.jpg?raw=true "1")
+![Alt text](https://raw.github.com/Ziad17/NasaSpaceSight/master/NSS REP/2020_11_27_03.13.45.jpg?raw=true "1")
 ![Alt text](/NSS REP/2020_11_27_03.14.20.jpg?raw=true "2")
 
 ![Alt text](/NSS REP/2020_11_27_03.14.20.jpg?raw=true "3")
