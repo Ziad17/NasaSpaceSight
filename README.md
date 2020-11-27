@@ -9,11 +9,11 @@ Android application written in java that represents the free NASA image API to v
 
 
 ![Alt text](https://raw.github.com/Ziad17/NasaSpaceSight/master/NSS+REP/2020_11_27_03.13.45.jpg?raw=true "1")
-![Alt text](/NSS REP/2020_11_27_03.14.20.jpg?raw=true "2")
+![Alt text]((https://raw.github.com/Ziad17/NasaSpaceSight/master/NSS+REP/2020_11_27_03.14.20.jpg?raw=true "2")
 
-![Alt text](/NSS REP/2020_11_27_03.14.20.jpg?raw=true "3")
+![Alt text]((https://raw.github.com/Ziad17/NasaSpaceSight/master/NSS+REP/2020_11_27_03.14.20.jpg?raw=true "3")
 
-![Alt text](/NSS REP/2020_11_27_03.15.43.jpg?raw=true "4")
+![Alt text](/NSS+REP/2020_11_27_03.15.43.jpg?raw=true "4")
 
 ![Alt text](/NSS REP/2020_11_27_03.15.57.jpg?raw=true "5")
 
