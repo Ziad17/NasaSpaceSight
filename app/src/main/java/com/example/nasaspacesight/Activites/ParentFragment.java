@@ -26,9 +26,7 @@ import java.util.HashMap;
 
 public abstract class ParentFragment extends Fragment implements SearchableFragment,ContextWithInitiativeBehavior, NormalImageRecycleAdapterNIL.OnImageClickLisetenr {
 
-
     protected HashMap<String, Object> lastQuery;
-
     protected LinearLayout mainProgressBar;
     protected ScrollView mainLinearLayout;
     protected RecyclerView resultsRecyclerView;

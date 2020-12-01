@@ -19,17 +19,7 @@ public class ResultsFragmentOfflineResultsAPOD extends ResultsFragmentAPOD {
     OfflineViewModelApod offlineViewModelApod;
 
     RoomDatabase db;
-    @Override
-    public void init() {
-        super.init();
-        initDB();
-        initCaching();
-        dataLoaded();
 
-
-
-
-    }
 
     @Override
     public void onResume() {
@@ -39,6 +29,9 @@ public class ResultsFragmentOfflineResultsAPOD extends ResultsFragmentAPOD {
 
     @Override
     public void specificInit() {
+        initDB();
+        initCaching();
+        dataLoaded();
 
     }
 

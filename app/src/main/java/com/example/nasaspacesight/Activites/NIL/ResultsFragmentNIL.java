@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Toast;
@@ -136,6 +137,7 @@ public class ResultsFragmentNIL extends ParentFragment implements PagesReyclerAd
 
     @Override
     public void updateViews(DataWrapper items_) {
+
         try {
             DataWrapper<Collection> items = (DataWrapper<Collection>) items_;
             switch (items.getStatus()) {
@@ -155,6 +157,7 @@ public class ResultsFragmentNIL extends ParentFragment implements PagesReyclerAd
             }
         } catch (Exception e) {
             dataFailed("Service Or Network Error");
+            Log.e(TAG, "updateViews: ",e );
         }
 
 
@@ -175,7 +178,6 @@ public class ResultsFragmentNIL extends ParentFragment implements PagesReyclerAd
     private void updateAdapter(Collection items) {
         if (items != null) {
             adapter.setArrayOfItems(items.getItems());
-
         }
 
     }

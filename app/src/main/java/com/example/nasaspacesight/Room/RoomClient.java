@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.example.nasaspacesight.Executors.AppExecutors;
 import com.example.nasaspacesight.POJO_APOD.SingleApodResponse;
+import com.example.nasaspacesight.POJO_NIL.Collection;
 import com.example.nasaspacesight.POJO_NIL.Item;
 import com.example.nasaspacesight.POJO_NIL.ItemOffline;
 import com.example.nasaspacesight.ViewModels.DataWrapper;
@@ -46,11 +47,11 @@ public class RoomClient {
         return TAG;
     }
 
-    public MutableLiveData<DataWrapper<List<Item>>> getArrayNIL() {
+    public MutableLiveData<DataWrapper<Collection>> getArrayNIL() {
         return arrayNIL;
     }
 
-    private MutableLiveData<DataWrapper<List<Item>>> arrayNIL;
+    private MutableLiveData<DataWrapper<Collection>> arrayNIL;
 
     private RoomClient() {
         arrayAPOD = new MutableLiveData<>();
@@ -72,29 +73,31 @@ public class RoomClient {
 
     public void searchCacheNIL(RoomDatabase database)
     {
-                   arrayNIL.postValue(new DataWrapper<>(null,LOADING,""));
 
         AppExecutors.getInstance().getworkIO().submit(() -> {
-            //try{
+            try{
                 List<ItemOffline> itemsOffline=database.getDao().getNILitems();
-                List<Item> items=new ArrayList<>();
+                ArrayList<Item> items=new ArrayList<>();
                 for(ItemOffline i :itemsOffline)
                 {
                     items.add(i.toNILitem());
+
+
                 }
-                arrayNIL.postValue(new DataWrapper<>(items,SUCCESSED,""));
-           // }
-            /*catch (Exception e)
+                Collection collection=new Collection();
+                collection.setItems(items);
+                arrayNIL.postValue(new DataWrapper<Collection>(collection,SUCCESSED,""));
+            }
+            catch (Exception e)
             {
 
-                arrayNIL.postValue(new DataWrapper<>(null,SUCCESSED,e.getMessage()));
-            }*/
+                arrayNIL.postValue(new DataWrapper<>(arrayNIL.getValue().getCollection(),FAILED,e.getMessage()));
+            }
 
         });
     }
     public void searchCacheAPOD(RoomDatabase database)
     {
-        arrayAPOD.postValue(new DataWrapper<>(null,LOADING,""));
 
         AppExecutors.getInstance().getworkIO().submit(() -> {
             try{
@@ -103,7 +106,7 @@ public class RoomClient {
             }
             catch (Exception e)
             {
-                arrayAPOD.postValue(new DataWrapper<>(null,FAILED,e.getMessage()));
+                arrayAPOD.postValue(new DataWrapper<>(arrayAPOD.getValue().getCollection(),FAILED,e.getMessage()));
             }
 
         });
@@ -113,7 +116,7 @@ public class RoomClient {
         AppExecutors.getInstance().getworkIO().submit(() -> {
             try{
                 database.getDao().insertImage(singleApodResponse);
-
+                Log.e(TAG, "insert: "+ singleApodResponse.getTitle()+" done" );
             }
             catch (Exception e)
             {
@@ -127,6 +130,7 @@ public class RoomClient {
         AppExecutors.getInstance().getworkIO().submit(() -> {
             try{
                 database.getDao().removeImage(singleApodResponse);
+                Log.e(TAG, "delete: "+ singleApodResponse.getTitle()+" done" );
 
             }
             catch (Exception e)
@@ -141,6 +145,7 @@ public class RoomClient {
         AppExecutors.getInstance().getworkIO().submit(() -> {
             try{
                 database.getDao().insertImage(ItemOffline.convertNILtoNILoffline(item));
+                Log.e(TAG, "insert: "+ item.getData().getNasaId()+" done" );
 
             }
             catch (Exception e)
@@ -156,10 +161,13 @@ public class RoomClient {
             try{
                 database.getDao().removeImage(ItemOffline.convertNILtoNILoffline(item));
 
+
+                Log.e(TAG, "delete: "+ item.getData().getNasaId()+" done" );
+
             }
             catch (Exception e)
             {
-                Log.e(TAG, "insert: ",e );
+                Log.e(TAG, "insert:Error ",e );
             }
 
         });
@@ -169,12 +177,10 @@ public class RoomClient {
     public void checkAPODItem(String date, RoomDatabase database)
     {
 
-        itemAPOD.postValue(null);
         AppExecutors.getInstance().getworkIO().submit(() -> itemAPOD.postValue(database.getDao().getAPODitem(date)));
     }
 
     public void checkNILItem(String nasa_id,RoomDatabase database) {
-        itemNIL.postValue(null);
         AppExecutors.getInstance().getworkIO().submit(() -> itemNIL.postValue(database.getDao().getNILitem(nasa_id)));
     }
 }

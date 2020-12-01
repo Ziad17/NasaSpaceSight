@@ -33,16 +33,12 @@ public class FavoritesFragment extends Fragment implements ContextWithInitiative
     ResultsFragmentOfflineResultsAPOD fragmentOfflineAPOD;
     ResultsFragmentOfflineNIL fragmentOfflineNIL;
     FavoritesAdapter favoritesAdapter;
-
     public FavoritesFragment() {
         // Required empty public constructor
     }
-
-
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        init();
     }
 
     @Override
@@ -50,6 +46,7 @@ public class FavoritesFragment extends Fragment implements ContextWithInitiative
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_favorites, container, false);
+
     }
 
     @Override
@@ -74,13 +71,19 @@ public class FavoritesFragment extends Fragment implements ContextWithInitiative
 }
 
     private void initFragments() {
-        fragmentOfflineAPOD =new ResultsFragmentOfflineResultsAPOD();
         fragmentOfflineNIL =new ResultsFragmentOfflineNIL();
+        fragmentOfflineAPOD =new ResultsFragmentOfflineResultsAPOD();
         favoritesAdapter=new FavoritesAdapter(getParentFragmentManager(),0);
         favoritesAdapter.addFragment(fragmentOfflineNIL,getContext().getDrawable(R.drawable.ic_today_black_24dp));
         favoritesAdapter.addFragment(fragmentOfflineAPOD,getContext().getDrawable(R.drawable.ic_image_black_24dp));
 
 
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        init();
     }
 
     private void BindViews()

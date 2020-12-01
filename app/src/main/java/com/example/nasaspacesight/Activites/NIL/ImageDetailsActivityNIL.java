@@ -227,7 +227,7 @@ public class ImageDetailsActivityNIL extends ThemedActivity {
                 }
             });
         } else {
-            modelView.checkNILItem(itemNIL.getNasa_id(),database);
+            modelView.checkNILItem(itemNIL.getData().getNasaId(),database);
             modelView.getNILItem().observe(this, itemOffline -> {
                 if(itemOffline!=null) {
                     itemNIL.setFavorite(true);

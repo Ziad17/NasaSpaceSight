@@ -3,6 +3,7 @@ package com.example.nasaspacesight.ViewModels;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.example.nasaspacesight.POJO_NIL.Collection;
 import com.example.nasaspacesight.POJO_NIL.Item;
 import com.example.nasaspacesight.Repository.MainImageSearchRepo;
 import com.example.nasaspacesight.Room.RoomDatabase;
@@ -18,7 +19,7 @@ public class OfflineViewModelNIL extends ViewModel {
         //Items=new MutableLiveData<>();
     }
 
-    public LiveData<DataWrapper<List<Item>>> getNILcache()
+    public LiveData<DataWrapper<Collection>> getNILcache()
     {
         return repo.getNILcache();
     }

@@ -1,44 +1,29 @@
 package com.example.nasaspacesight.Activites.Offline;
 
 
-import androidx.fragment.app.Fragment;
+import android.util.Log;
+
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.room.Room;
 
 import com.example.nasaspacesight.Activites.NIL.ResultsFragmentNIL;
+import com.example.nasaspacesight.POJO_NIL.Collection;
+import com.example.nasaspacesight.POJO_NIL.Item;
 import com.example.nasaspacesight.Room.DatabaseInfo;
 import com.example.nasaspacesight.Room.RoomDatabase;
+import com.example.nasaspacesight.ViewModels.DataWrapper;
 import com.example.nasaspacesight.ViewModels.OfflineViewModelNIL;
 
-/**
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- * A simple {@link Fragment} subclass.
- */
+import java.util.List;
+
 public class ResultsFragmentOfflineNIL extends ResultsFragmentNIL {
 
-    OfflineViewModelNIL offlineViewModel;
-RoomDatabase db;
-    @Override
-    public void init() {
-        super.init();
-        initDB();
-        initCaching();
-        dataLoaded();
-    }
+    OfflineViewModelNIL offlineViewModelNIL;
+    RoomDatabase db;
+
+
+
 
     @Override
     protected void dataLoading() {
@@ -53,32 +38,40 @@ RoomDatabase db;
 
     @Override
     public void specificInit() {
-
+        initDB();
+        initCaching();
+        dataLoaded();
     }
     private void initDB() {
         db= Room.databaseBuilder(getContext(), RoomDatabase.class, DatabaseInfo.DB_NAME).build();
-
     }
 
     private void initCaching()
     {
-        offlineViewModel.requestNILcache(db);
+        offlineViewModelNIL.requestNILcache(db);
     }
 
     @Override
     public void initViewModel() {
-        offlineViewModel=new ViewModelProvider(this).get(OfflineViewModelNIL.class);
+        offlineViewModelNIL =new ViewModelProvider(this).get(OfflineViewModelNIL.class);
     }
 
+    private static final String TAG = "ResultsFragmentOfflineN";
     @Override
     public void subscribeToViewModel() {
-        offlineViewModel.getNILcache().observe(getViewLifecycleOwner(), this::updateViews);
+        offlineViewModelNIL.getNILcache().observe(getViewLifecycleOwner(), new Observer<DataWrapper<Collection>>() {
+            @Override
+            public void onChanged(DataWrapper<Collection> collectionDataWrapper) {
+                updateViews(collectionDataWrapper);
+            }
+        });
     }
 
     @Override
     protected void updatePageAdapter(int i) {
 
     }
+
 
     @Override
     public void initSearchDialog() {

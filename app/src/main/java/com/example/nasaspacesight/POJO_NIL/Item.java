@@ -30,15 +30,8 @@ public class Item extends Observable implements Serializable {
     private boolean Favorite;
 
 
-    public String getNasa_id() {
-        return nasa_id;
-    }
 
-    public void setNasa_id(String nasa_id) {
-        this.nasa_id = nasa_id;
-    }
 
-    private String nasa_id;
 
 
     protected Item(Parcel in) {

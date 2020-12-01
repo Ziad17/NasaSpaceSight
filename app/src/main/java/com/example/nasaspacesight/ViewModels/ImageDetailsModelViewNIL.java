@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.nasaspacesight.POJO_APOD.SingleApodResponse;
+import com.example.nasaspacesight.POJO_NIL.Collection;
 import com.example.nasaspacesight.POJO_NIL.ImageLinks;
 import com.example.nasaspacesight.POJO_NIL.Item;
 import com.example.nasaspacesight.POJO_NIL.ItemOffline;
@@ -58,7 +59,7 @@ public class ImageDetailsModelViewNIL extends ViewModel {
     {
          repo.requestNILcache(database);
     }
-    public LiveData<DataWrapper<List<Item>>> getNILitems()
+    public LiveData<DataWrapper<Collection>> getNILitems()
     {
          return repo.getNILcache();
     }

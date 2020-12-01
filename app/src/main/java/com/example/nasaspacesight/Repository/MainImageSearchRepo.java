@@ -95,7 +95,7 @@ public class MainImageSearchRepo {
         roomDatabaseOperations.delete(image,database);
 
     }
-    public LiveData<DataWrapper<List<Item>>> getNILcache()
+    public LiveData<DataWrapper<Collection> >getNILcache()
     {
         return roomDatabaseOperations.getArrayNIL() ;
     }

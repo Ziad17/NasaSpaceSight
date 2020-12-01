@@ -115,13 +115,13 @@ public class MainActivity extends ThemedActivity  {
             roomDatabase= Room.databaseBuilder(this,RoomDatabase.class,DB_NAME).fallbackToDestructiveMigration().build();
 
 
-            imageDetailsModelViewNIL.getAPODitems().observe(this, listDataWrapper -> Log.e(TAG, "Size "+listDataWrapper.getCollection().size() ));
-            imageDetailsModelViewNIL.getNILitems().observe(this, listDataWrapper -> Log.e(TAG, "Size +!"+listDataWrapper.getCollection().size() ));
+    //        imageDetailsModelViewNIL.getAPODitems().observe(this, listDataWrapper -> Log.e(TAG, "Size "+listDataWrapper.getCollection().size() ));
+         //   imageDetailsModelViewNIL.getNILitems().observe(this, listDataWrapper -> Log.e(TAG, "Size +!"+listDataWrapper.getCollection().size() ));
 
-             dropAllRecords();
+//             dropAllRecords();
 
             //imageDetailsModelViewNIL.searchCacheAPOD(roomDatabase);
-            imageDetailsModelViewNIL.saveImage(Constants.getARRAY().getCollection().get(0).toNILitem(),roomDatabase);
+       /*     imageDetailsModelViewNIL.saveImage(Constants.getARRAY().getCollection().get(0).toNILitem(),roomDatabase);
             imageDetailsModelViewNIL.saveImage(Constants.getARRAY().getCollection().get(1).toNILitem(),roomDatabase);
             imageDetailsModelViewNIL.saveImage(Constants.getARRAY().getCollection().get(2).toNILitem(),roomDatabase);
             imageDetailsModelViewNIL.saveImage(Constants.getARRAY().getCollection().get(3).toNILitem(),roomDatabase);
@@ -132,7 +132,7 @@ public class MainActivity extends ThemedActivity  {
             imageDetailsModelViewNIL.saveImage(Constants.getARRAY_1().getCollection().get(2),roomDatabase);
             imageDetailsModelViewNIL.saveImage(Constants.getARRAY_1().getCollection().get(3),roomDatabase);
 
-
+*/
 
 
 
