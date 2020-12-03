@@ -4,8 +4,10 @@
 
     tools:showIn="nav_view">
 
-<group android:checkableBehavior="single">
-<item android:id="@+id/images"
+<group android:checkableBehavior="single"
+    android:id="@+id/online"
+    >
+    <item android:id="@+id/images"
     android:title="@string/images"
     android:iconTint="@color/colorPrimary"
     android:icon="@drawable/ic_image_black_24dp"/>
@@ -14,12 +16,24 @@
         android:iconTint="@color/colorPrimary"
         android:title="@string/photo_of_the_day"
         android:icon="@drawable/ic_today_black_24dp"/>
-    <item android:id="@+id/favs"
-        android:iconTint="@color/colorPrimary"
-        android:title="@string/favorites"
-        android:icon="@drawable/ic_favorite_black_24dp"/>
 </group>
-    <group android:checkableBehavior="single">
+
+    <group
+        android:checkableBehavior="single"
+        android:id="@+id/offline">
+    <item android:id="@+id/favs_imgs"
+        android:iconTint="@color/colorPrimary"
+        android:title="@string/images_offline"
+        android:icon="@drawable/ic_image_black_24dp"/>
+        <item
+            android:id="@+id/favs_apod"
+            android:iconTint="@color/colorPrimary"
+            android:title="@string/potd_offline"
+            android:icon="@drawable/ic_today_black_24dp"/>
+
+    </group>
+    <group android:checkableBehavior="single"
+        android:id="@+id/settings_group">
         <item android:id="@+id/settings"
             android:title="@string/settings"
             android:iconTint="@color/colorPrimary"
@@ -28,12 +42,13 @@
             android:title="@string/about"
             android:iconTint="@color/colorPrimary"
             android:icon="@drawable/ic_info_outline_black_24dp"/>
-</group>
-    <group android:checkableBehavior="single">
+
         <item android:id="@+id/github"
             android:title="@string/source_code"
             android:iconTint="@color/colorPrimary"
             android:icon="@drawable/ic_github"/>
     </group>
+
+
 
 </menu>

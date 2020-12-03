@@ -41,20 +41,21 @@ public class ResultsFragmentNIL extends ParentFragment implements PagesReyclerAd
 
 
     private static final String TAG = "ResultsFragmentNIL";
-    private NormalImageRecycleAdapterNIL adapter;
-    private SearchDialogNIL searchDialogNIL;
-    private ItemListViewModelNIL viewModel;
-    private PagesReyclerAdapterNIL pagesReyclerAdapterNIL;
-    private RecyclerView pageRecyclerView;
+    protected NormalImageRecycleAdapterNIL adapter;
+    protected SearchDialogNIL searchDialogNIL;
+    protected ItemListViewModelNIL viewModel;
+    protected PagesReyclerAdapterNIL pagesReyclerAdapterNIL;
+    protected RecyclerView pageRecyclerView;
 
 
     @Override
     public void specificInit() {
         dataLoaded();
-        //searchDialogNIL.show();
-        HashMap<String, Object> hashMap = new HashMap<String, Object>();
+        searchDialogNIL.show();
+        /*HashMap<String, Object> hashMap = new HashMap<String, Object>();
         hashMap.put(ImagesClientAPI.NIL_QUERY, "galaxy");
         search(hashMap);
+*/
     }
 
     @Override
@@ -97,20 +98,12 @@ public class ResultsFragmentNIL extends ParentFragment implements PagesReyclerAd
         resultsRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         resultsRecyclerView.setAdapter(adapter);
         recyclerViewLayoutManager = (LinearLayoutManager) (resultsRecyclerView.getLayoutManager());
-
-
-
-
-
-
     }
 
     @Override
     public void BindView() {
         super.BindView();
         pageRecyclerView = getView().findViewById(R.id.page_view);
-
-
     }
 
     @Override
@@ -150,14 +143,14 @@ public class ResultsFragmentNIL extends ParentFragment implements PagesReyclerAd
                 case SUCCESSED:
                     dataLoaded();
                     updateAdapter(items.getCollection());
-                    updatePageAdapter(items.getCollection().getMetadata().getTotalHits() / 100 > 100 ? 99 : items.getCollection().getMetadata().getTotalHits() / 100);
-                    updateTotalHitsTextView(items.getCollection().getMetadata().getTotalHits());
+                    //updatePageAdapter(items.getCollection().getMetadata().getTotalHits() / 100 > 100 ? 99 : items.getCollection().getMetadata().getTotalHits() / 100);
+                    //updateTotalHitsTextView(items.getCollection().getMetadata().getTotalHits());
                     break;
 
             }
         } catch (Exception e) {
             dataFailed("Service Or Network Error");
-            Log.e(TAG, "updateViews: ",e );
+            Log.e(TAG, "updateViews: ", e);
         }
 
 
@@ -175,7 +168,7 @@ public class ResultsFragmentNIL extends ParentFragment implements PagesReyclerAd
 
 
     //TODO: Optimise Those Buttons
-    private void updateAdapter(Collection items) {
+    public void updateAdapter(Collection items) {
         if (items != null) {
             adapter.setArrayOfItems(items.getItems());
         }

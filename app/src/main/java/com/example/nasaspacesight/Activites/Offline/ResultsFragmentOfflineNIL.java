@@ -1,39 +1,46 @@
 package com.example.nasaspacesight.Activites.Offline;
 
 
-import android.util.Log;
+
+import android.widget.Toast;
 
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 
 import com.example.nasaspacesight.Activites.NIL.ResultsFragmentNIL;
+import com.example.nasaspacesight.Activites.NIL.SearchDialogNIL;
+import com.example.nasaspacesight.Activites.ParentFragment;
+import com.example.nasaspacesight.Adapters.NormalImageRecycleAdapterNIL;
+import com.example.nasaspacesight.Adapters.PagesReyclerAdapterNIL;
 import com.example.nasaspacesight.POJO_NIL.Collection;
-import com.example.nasaspacesight.POJO_NIL.Item;
+import com.example.nasaspacesight.R;
 import com.example.nasaspacesight.Room.DatabaseInfo;
 import com.example.nasaspacesight.Room.RoomDatabase;
 import com.example.nasaspacesight.ViewModels.DataWrapper;
+import com.example.nasaspacesight.ViewModels.ItemListViewModelNIL;
 import com.example.nasaspacesight.ViewModels.OfflineViewModelNIL;
 
-import java.util.List;
+import java.util.HashMap;
+import java.util.Objects;
+
 
 public class ResultsFragmentOfflineNIL extends ResultsFragmentNIL {
+
+
 
     OfflineViewModelNIL offlineViewModelNIL;
     RoomDatabase db;
 
 
 
-
-    @Override
-    protected void dataLoading() {
-
-    }
-
     @Override
     public void onResume() {
         super.onResume();
-        init();
+        //specificInit();
+        Toast.makeText(getContext(), "RESUMEDEEE", Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -43,7 +50,14 @@ public class ResultsFragmentOfflineNIL extends ResultsFragmentNIL {
         dataLoaded();
     }
     private void initDB() {
-        db= Room.databaseBuilder(getContext(), RoomDatabase.class, DatabaseInfo.DB_NAME).build();
+        db= Room.databaseBuilder(Objects.requireNonNull(getContext()), RoomDatabase.class, DatabaseInfo.DB_NAME).build();
+    }
+
+
+
+    @Override
+    public void search(HashMap<String, Object> query) {
+
     }
 
     private void initCaching()
@@ -67,10 +81,7 @@ public class ResultsFragmentOfflineNIL extends ResultsFragmentNIL {
         });
     }
 
-    @Override
-    protected void updatePageAdapter(int i) {
 
-    }
 
 
     @Override
@@ -81,4 +92,7 @@ public class ResultsFragmentOfflineNIL extends ResultsFragmentNIL {
     public void initMenuOptions() {
 
     }
+
+
+
 }

@@ -14,12 +14,13 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.TextView;
 
 import com.example.nasaspacesight.Activites.APOD.ResultsFragmentAPOD;
 import com.example.nasaspacesight.Activites.NIL.ResultsFragmentNIL;
 import com.example.nasaspacesight.Activites.Offline.FavoritesFragment;
+import com.example.nasaspacesight.Activites.Offline.ResultsFragmentOfflineNIL;
+import com.example.nasaspacesight.Activites.Offline.ResultsFragmentOfflineResultsAPOD;
 import com.example.nasaspacesight.R;
 import com.example.nasaspacesight.Room.RoomDatabase;
 import com.example.nasaspacesight.Util.Constants;
@@ -50,7 +51,13 @@ public class MainActivity extends ThemedActivity  {
     FragmentManager fragmentManager;
     ResultsFragmentNIL resultsFragmentNIL;
     FavoritesFragment favoritesFragment;
+    ResultsFragmentOfflineNIL resultsFragmentNILoffline;
+    ResultsFragmentOfflineResultsAPOD resultsFragmentAPODoffline;
+
+
     private static final String TAG = "MainActivity";
+
+
 
 
 
@@ -97,6 +104,7 @@ public class MainActivity extends ThemedActivity  {
 
 
 
+
     }
 
     @Override
@@ -118,7 +126,7 @@ public class MainActivity extends ThemedActivity  {
     //        imageDetailsModelViewNIL.getAPODitems().observe(this, listDataWrapper -> Log.e(TAG, "Size "+listDataWrapper.getCollection().size() ));
          //   imageDetailsModelViewNIL.getNILitems().observe(this, listDataWrapper -> Log.e(TAG, "Size +!"+listDataWrapper.getCollection().size() ));
 
-//             dropAllRecords();
+            // dropAllRecords();
 
             //imageDetailsModelViewNIL.searchCacheAPOD(roomDatabase);
        /*     imageDetailsModelViewNIL.saveImage(Constants.getARRAY().getCollection().get(0).toNILitem(),roomDatabase);
@@ -163,6 +171,8 @@ public class MainActivity extends ThemedActivity  {
         infoFragment=new InfoFragment();
         favoritesFragment=new FavoritesFragment();
         placeHolderfrgment=new PlaceHolder();
+        resultsFragmentAPODoffline=new ResultsFragmentOfflineResultsAPOD();
+        resultsFragmentNILoffline=new ResultsFragmentOfflineNIL();
 
     }
 
@@ -191,8 +201,12 @@ public class MainActivity extends ThemedActivity  {
                     redirectToApodFragment();
                     break;
 
-                case R.id.favs:
-                    redirectToFavoriteFragment();
+                case R.id.favs_imgs:
+                    redirectToImagesFragmentOffline();
+                    break;
+                case R.id.favs_apod:
+                    redirectToApodFragmentOffline();
+
                     break;
                 case R.id.info:
                     redirectToInfoFragment();
@@ -204,6 +218,7 @@ public class MainActivity extends ThemedActivity  {
                 case R.id.github:
                     redirectToGithub();
                     break;
+
             }
             drawerLayout.closeDrawer(navigationView);
             return false;
@@ -238,6 +253,17 @@ public class MainActivity extends ThemedActivity  {
 
         //for now we will use nil_menu
         redirectToCertainFragment(resultsFragmentAPOD,R.menu.images_menu,getString(R.string.photo_of_the_day));
+    }
+    private void redirectToApodFragmentOffline()
+    {
+
+        //for now we will use nil_menu
+        redirectToCertainFragment(resultsFragmentAPODoffline,R.menu.empty_menu,getString(R.string.photo_of_the_day));
+    }
+
+    private void redirectToImagesFragmentOffline()
+    {
+        redirectToCertainFragment(resultsFragmentNILoffline,R.menu.empty_menu,getString(R.string.images));
     }
 
 

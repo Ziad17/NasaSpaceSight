@@ -24,6 +24,8 @@ import static com.example.nasaspacesight.Activites.NIL.ImageDetailsActivityNIL.T
 /**
  * A simple {@link Fragment} subclass.
  */
+
+@Deprecated
 public class FavoritesFragment extends Fragment implements ContextWithInitiativeBehavior {
 
     ViewPager viewPager;
@@ -33,12 +35,15 @@ public class FavoritesFragment extends Fragment implements ContextWithInitiative
     ResultsFragmentOfflineResultsAPOD fragmentOfflineAPOD;
     ResultsFragmentOfflineNIL fragmentOfflineNIL;
     FavoritesAdapter favoritesAdapter;
+
     public FavoritesFragment() {
         // Required empty public constructor
     }
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        init();
     }
 
     @Override
@@ -50,48 +55,41 @@ public class FavoritesFragment extends Fragment implements ContextWithInitiative
     }
 
     @Override
-    public void init()
-    {
+    public void init() {
         BindViews();
         initFragments();
         initTabLayout();
-
+        Log.e(TAG, "init: " );
     }
 
-    private void initTabLayout()
-    {
+    private void initTabLayout() {
         viewPager.setAdapter(favoritesAdapter);
         tabLayout.setupWithViewPager(viewPager);
-        Log.e(TAG, "initTabLayout: " );
-        TabLayout.Tab images= tabLayout.getTabAt(0);
+        TabLayout.Tab images = tabLayout.getTabAt(0);
         images.setIcon(favoritesAdapter.getIcons().get(1));
 
-        TabLayout.Tab apod= tabLayout.getTabAt(1);
+        Log.e(TAG, "initTabLayout: " );
+        TabLayout.Tab apod = tabLayout.getTabAt(1);
         apod.setIcon(favoritesAdapter.getIcons().get(0));
-}
+    }
 
     private void initFragments() {
-        fragmentOfflineNIL =new ResultsFragmentOfflineNIL();
-        fragmentOfflineAPOD =new ResultsFragmentOfflineResultsAPOD();
-        favoritesAdapter=new FavoritesAdapter(getParentFragmentManager(),0);
-        favoritesAdapter.addFragment(fragmentOfflineNIL,getContext().getDrawable(R.drawable.ic_today_black_24dp));
-        favoritesAdapter.addFragment(fragmentOfflineAPOD,getContext().getDrawable(R.drawable.ic_image_black_24dp));
-
-
+        fragmentOfflineNIL = new ResultsFragmentOfflineNIL();
+        fragmentOfflineAPOD = new ResultsFragmentOfflineResultsAPOD();
+        favoritesAdapter = new FavoritesAdapter(getParentFragmentManager(), 0);
+        favoritesAdapter.addFragment(fragmentOfflineNIL, getContext().getDrawable(R.drawable.ic_today_black_24dp));
+        favoritesAdapter.addFragment(fragmentOfflineAPOD, getContext().getDrawable(R.drawable.ic_image_black_24dp));
+        Log.e(TAG, "initFragments: " );
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        init();
-    }
 
-    private void BindViews()
-    {
-        viewPager=getView().findViewById(R.id.view_pager);
-        tabLayout=getView().findViewById(R.id.main_tablayout);
-        apodTabItem=getView().findViewById(R.id.nil_offline);
-        imagesTabItem=getView().findViewById(R.id.apod_offline);
+
+    private void BindViews() {
+        viewPager = getView().findViewById(R.id.view_pager);
+        tabLayout = getView().findViewById(R.id.main_tablayout);
+        apodTabItem = getView().findViewById(R.id.nil_offline);
+        imagesTabItem = getView().findViewById(R.id.apod_offline);
+        Log.e(TAG, "BindViews: " );
     }
 
 }

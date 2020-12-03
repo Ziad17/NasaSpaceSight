@@ -64,4 +64,6 @@
     <string name="nasa_space_sight">Nasa Space Sight</string>
     <string name="favorite">Favorite</string>
     <string name="favorites">Favorites</string>
+    <string name="potd_offline">POTD Offline</string>
+    <string name="images_offline">Images Offline</string>
 </resources>
