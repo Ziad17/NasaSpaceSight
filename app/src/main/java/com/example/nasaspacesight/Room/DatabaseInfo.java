@@ -2,7 +2,7 @@ package com.example.nasaspacesight.Room;
 
 public interface DatabaseInfo {
     String DB_NAME="db_images";
-    int DB_VERSION = 1;
+    int DB_VERSION = 6;
 
 
     interface NilTable {
@@ -18,7 +18,6 @@ public interface DatabaseInfo {
         String NIL_OBJECT_MEDIA_TYPE = "nil_object_data_media_type";
         String NIL_OBJECT_DATA_DESCRIPTION = "nil_object_data_description";
         String NIL_OBJECT_IS_FAV = "nil_object_is_fav";
-
         String NIL_OBJECT_REL = "nil_object_rel";
         String NIL_OBJECT_HREF_LINKS = "nil_object_href_links";
         String NIL_OBJECT_RENDER = "nil_object_render";

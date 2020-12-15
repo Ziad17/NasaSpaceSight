@@ -7,6 +7,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 import static com.example.nasaspacesight.ApiData.EPIC.EpicClientAPI.EPIC_BASE_URL;
 
+@Deprecated
+
 public class EpicResources {
     private static volatile EpicResources client;
     private Retrofit retrofit;

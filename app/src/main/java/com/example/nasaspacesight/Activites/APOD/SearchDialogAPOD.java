@@ -82,13 +82,6 @@ public class SearchDialogAPOD extends Dialog implements ContextWithInitiativeBeh
 
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        init();
-
-    }
-
 
     @Override
     public void init() {
@@ -190,6 +183,8 @@ public class SearchDialogAPOD extends Dialog implements ContextWithInitiativeBeh
         }
         else {
             searchHashMap.put(ApodClientAPI.APOD_START_DATE, startDateEditText.getText().toString().trim());
+            searchHashMap.put(ApodClientAPI.APOD_END_DATE, "");
+
         }
         
         fragmentsExchanger.search(searchHashMap);

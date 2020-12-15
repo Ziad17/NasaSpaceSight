@@ -5,18 +5,19 @@ import android.util.Log;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.nasaspacesight.Executors.AppExecutors;
-import com.example.nasaspacesight.POJO_APOD.SingleApodResponse;
-import com.example.nasaspacesight.POJO_NIL.Collection;
-import com.example.nasaspacesight.POJO_NIL.Item;
-import com.example.nasaspacesight.POJO_NIL.ItemOffline;
-import com.example.nasaspacesight.ViewModels.DataWrapper;
+import com.example.nasaspacesight.PojoModels.POJO_APOD.SingleApodResponse;
+import com.example.nasaspacesight.PojoModels.POJO_NIL.Collection;
+import com.example.nasaspacesight.PojoModels.POJO_NIL.Item;
+import com.example.nasaspacesight.PojoModels.POJO_NIL.ItemOffline;
+import com.example.nasaspacesight.PojoModels.Quiries.QueryAPOD;
+import com.example.nasaspacesight.PojoModels.Quiries.QueryNIL;
+import com.example.nasaspacesight.PojoModels.DataWrapper;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.example.nasaspacesight.ViewModels.DataWrapperStatus.FAILED;
-import static com.example.nasaspacesight.ViewModels.DataWrapperStatus.LOADING;
-import static com.example.nasaspacesight.ViewModels.DataWrapperStatus.SUCCESSED;
+import static com.example.nasaspacesight.PojoModels.DataWrapperStatus.FAILED;
+import static com.example.nasaspacesight.PojoModels.DataWrapperStatus.SUCCESSED;
 
 public class RoomClient {
 
@@ -26,6 +27,17 @@ public class RoomClient {
 
     public MutableLiveData<DataWrapper<List<SingleApodResponse>>> getArrayAPOD() {
         return arrayAPOD;
+    }
+
+    private MutableLiveData<DataWrapper<List<QueryAPOD>>> queriesHistoryAPOD;
+    private MutableLiveData<DataWrapper<List<QueryNIL>>> queriesHistoryNIL;
+
+    public MutableLiveData<DataWrapper<List<QueryAPOD>>> getQueriesHistoryAPOD() {
+        return queriesHistoryAPOD;
+    }
+
+    public MutableLiveData<DataWrapper<List<QueryNIL>>> getQueriesHistoryNIL() {
+        return queriesHistoryNIL;
     }
 
     private MutableLiveData<DataWrapper<List<SingleApodResponse>>> arrayAPOD;
@@ -58,6 +70,8 @@ public class RoomClient {
         arrayNIL = new MutableLiveData<>();
         itemAPOD=new MutableLiveData<>();
         itemNIL=new MutableLiveData<>();
+        queriesHistoryAPOD=new MutableLiveData<>();
+        queriesHistoryNIL=new MutableLiveData<>();
 
     }
 
@@ -81,8 +95,6 @@ public class RoomClient {
                 for(ItemOffline i :itemsOffline)
                 {
                     items.add(i.toNILitem());
-
-
                 }
                 Collection collection=new Collection();
                 collection.setItems(items);
@@ -183,4 +195,70 @@ public class RoomClient {
     public void checkNILItem(String nasa_id,RoomDatabase database) {
         AppExecutors.getInstance().getworkIO().submit(() -> itemNIL.postValue(database.getDao().getNILitem(nasa_id)));
     }
+
+
+    public void searchHistoryAPOD(RoomDatabase roomDatabase)
+    {
+        AppExecutors.getInstance().getworkIO().submit(() -> {
+                            queriesHistoryAPOD.postValue(new DataWrapper<>(roomDatabase.getDao().searchHistoryAPOD(), SUCCESSED, null));
+        });
+    }
+
+
+    public void searchHistoryNIL(RoomDatabase roomDatabase)
+    {
+        AppExecutors.getInstance().getworkIO().submit(() -> {
+            queriesHistoryNIL.postValue(new DataWrapper<>(roomDatabase.getDao().searchHistoryNIL(), SUCCESSED, null));
+            Log.e(TAG, "checkNILItem: >>>>>>>>"+queriesHistoryNIL.getValue().getCollection().size() );
+
+        });
+    }
+
+    public void deleteHistoryQuery(QueryAPOD apod,RoomDatabase database)
+    {
+        AppExecutors.getInstance().getworkIO().submit(() -> {
+   database.getDao().deleteHistoryAPOD(apod);
+            queriesHistoryAPOD.postValue(new DataWrapper<>(database.getDao().searchHistoryAPOD(), SUCCESSED, null));
+
+        });
+    }
+
+    public void deleteHistoryQuery(QueryNIL nil,RoomDatabase database)
+    {
+        AppExecutors.getInstance().getworkIO().submit(() -> {
+            database.getDao().deleteHistoryNIL(nil);
+            queriesHistoryNIL.postValue(new DataWrapper<>(database.getDao().searchHistoryNIL(), SUCCESSED, null));
+        });
+    }
+
+    public void insertHistoryAPOD(QueryAPOD apod,RoomDatabase database)
+    {
+        AppExecutors.getInstance().getworkIO().submit(() -> {
+            database.getDao().insertHistoryAPOD(apod);
+        });
+    }
+    public void insertHistoryNIL(QueryNIL nil,RoomDatabase database)
+    {
+        AppExecutors.getInstance().getworkIO().submit(() -> {
+            database.getDao().insertHistoryNIL(nil);
+        });
+    }
+
+    public void deleteAllHistoryQueryAPOD(RoomDatabase database)
+    {
+        AppExecutors.getInstance().getworkIO().submit(() -> {
+            database.getDao().deleteAllHistoryAPOD();
+        });
+    }
+    public void deleteAllHistoryQueryNIL(RoomDatabase database)
+    {
+        AppExecutors.getInstance().getworkIO().submit(() -> {
+            database.getDao().deleteAllHistoryNIL();
+        });
+    }
+
+
+
+
+
 }

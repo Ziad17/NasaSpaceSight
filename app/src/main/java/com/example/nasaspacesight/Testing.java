@@ -1,16 +1,10 @@
 package com.example.nasaspacesight;
 
-import com.example.nasaspacesight.ApiData.APOD.ApodClient;
 import com.example.nasaspacesight.ApiData.APOD.ApodClientAPI;
-import com.example.nasaspacesight.ApiData.APOD.ApodResources;
 
 import java.util.HashMap;
 
-import com.example.nasaspacesight.POJO_APOD.SingleApodResponse;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-
+@Deprecated
 public class Testing {
     public static void main(String[] args)
     {

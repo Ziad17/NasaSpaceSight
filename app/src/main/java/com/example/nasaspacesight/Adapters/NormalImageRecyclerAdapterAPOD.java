@@ -1,7 +1,6 @@
 package com.example.nasaspacesight.Adapters;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
-import com.example.nasaspacesight.POJO_APOD.SingleApodResponse;
+import com.example.nasaspacesight.PojoModels.POJO_APOD.SingleApodResponse;
 import com.example.nasaspacesight.R;
 
 import java.util.List;

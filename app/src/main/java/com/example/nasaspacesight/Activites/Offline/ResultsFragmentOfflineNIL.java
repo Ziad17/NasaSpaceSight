@@ -6,21 +6,13 @@ import android.widget.Toast;
 
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 
 import com.example.nasaspacesight.Activites.NIL.ResultsFragmentNIL;
-import com.example.nasaspacesight.Activites.NIL.SearchDialogNIL;
-import com.example.nasaspacesight.Activites.ParentFragment;
-import com.example.nasaspacesight.Adapters.NormalImageRecycleAdapterNIL;
-import com.example.nasaspacesight.Adapters.PagesReyclerAdapterNIL;
-import com.example.nasaspacesight.POJO_NIL.Collection;
-import com.example.nasaspacesight.R;
+import com.example.nasaspacesight.PojoModels.POJO_NIL.Collection;
 import com.example.nasaspacesight.Room.DatabaseInfo;
 import com.example.nasaspacesight.Room.RoomDatabase;
-import com.example.nasaspacesight.ViewModels.DataWrapper;
-import com.example.nasaspacesight.ViewModels.ItemListViewModelNIL;
+import com.example.nasaspacesight.PojoModels.DataWrapper;
 import com.example.nasaspacesight.ViewModels.OfflineViewModelNIL;
 
 import java.util.HashMap;
@@ -93,6 +85,9 @@ public class ResultsFragmentOfflineNIL extends ResultsFragmentNIL {
 
     }
 
-
-
+    @Override
+    public boolean onBackPressedI()
+    {
+        return true;
+    }
 }

@@ -1,4 +1,4 @@
-package com.example.nasaspacesight.ViewModels;
+package com.example.nasaspacesight.PojoModels;
 
 public abstract class DataWrapperStatus {
 

@@ -2,7 +2,7 @@ package com.example.nasaspacesight.ApiData.Images;
 
 import androidx.annotation.Nullable;
 
-import com.example.nasaspacesight.POJO_NIL.FullApiResponse;
+import com.example.nasaspacesight.PojoModels.POJO_NIL.FullApiResponse;
 
 import java.util.ArrayList;
 import java.util.Map;

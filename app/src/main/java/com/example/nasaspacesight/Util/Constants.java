@@ -1,17 +1,13 @@
 package com.example.nasaspacesight.Util;
 
-import androidx.core.app.ActivityCompat;
+import com.example.nasaspacesight.PojoModels.POJO_APOD.SingleApodResponse;
+import com.example.nasaspacesight.PojoModels.POJO_NIL.ItemOffline;
+import com.example.nasaspacesight.PojoModels.DataWrapper;
 
-import com.example.nasaspacesight.POJO_APOD.SingleApodResponse;
-import com.example.nasaspacesight.POJO_NIL.Item;
-import com.example.nasaspacesight.POJO_NIL.ItemOffline;
-import com.example.nasaspacesight.ViewModels.DataWrapper;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.example.nasaspacesight.ViewModels.DataWrapperStatus.SUCCESSED;
+import static com.example.nasaspacesight.PojoModels.DataWrapperStatus.SUCCESSED;
 
 public abstract class Constants {
     public static final int SEARCH_START_YEAR = 1900;
@@ -23,7 +19,9 @@ public abstract class Constants {
     public static final String GITHUB_LINK="https://github.com/Ziad17/NasaSpaceSight";
 
 
+    @Deprecated
     public static  List<ItemOffline> ARRAY;
+    @Deprecated
     public static DataWrapper<List<ItemOffline>> getARRAY()
     {
         ARRAY=new ArrayList<ItemOffline>(){};
@@ -34,8 +32,9 @@ public abstract class Constants {
         ARRAY.add(new ItemOffline("2020-10-5","5 Image","file:///android_asset/8.jpg"));
         return new DataWrapper<>(ARRAY,SUCCESSED,"");
     }
-
+    @Deprecated
     public static  List<SingleApodResponse> ARRAY_1;
+    @Deprecated
     public static DataWrapper<List<SingleApodResponse>> getARRAY_1()
     {
         ARRAY_1=new ArrayList<SingleApodResponse>(){};

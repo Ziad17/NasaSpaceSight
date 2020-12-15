@@ -63,4 +63,9 @@ public class ResultsFragmentOfflineResultsAPOD extends ResultsFragmentAPOD {
     public void initMenuOptions() {
 
     }
+    @Override
+    public boolean onBackPressedI()
+    {
+        return true;
+    }
 }

@@ -1,4 +1,4 @@
-package com.example.nasaspacesight.POJO_NIL;
+package com.example.nasaspacesight.PojoModels.POJO_NIL;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

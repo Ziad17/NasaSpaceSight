@@ -40,6 +40,8 @@ public class MainActivity extends ThemedActivity  {
     private TextView titleTextView;
     PlaceHolder placeHolderfrgment;
 
+    IonBackPressed backStackedFrag;
+
     public Toolbar getMainToolbar() {
         return mainToolbar;
     }
@@ -62,6 +64,7 @@ public class MainActivity extends ThemedActivity  {
 
 
 
+
     //testing variables
     ImageDetailsModelViewNIL imageDetailsModelViewNIL;
     RoomDatabase roomDatabase;
@@ -77,8 +80,8 @@ public class MainActivity extends ThemedActivity  {
             drawerLayout.closeDrawer(GravityCompat.START);
             return;
         }
-
-        else {
+        else if(backStackedFrag.onBackPressedI())
+        {
 
             final MainActivity ref = this;
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this)
@@ -91,7 +94,9 @@ public class MainActivity extends ThemedActivity  {
                     .setNegativeButton("No", (dialog, which) -> dialog.dismiss());
             AlertDialog alertDialog = alertDialogBuilder.create();
             alertDialog.show();
+
         }
+
     }
 
     private void BindViews() {
@@ -114,41 +119,12 @@ public class MainActivity extends ThemedActivity  {
         initToggleButton();
         initNavigationItemSelectedListener();
         initFragmentManager();
-      //  redirectToCertainFragment(placeHolderfrgment,R.menu.empty_menu,getString(R.string.nasa_space_sight));
-
-        //testing
-
-
-            imageDetailsModelViewNIL= new ViewModelProvider(this).get(ImageDetailsModelViewNIL.class);
-            roomDatabase= Room.databaseBuilder(this,RoomDatabase.class,DB_NAME).fallbackToDestructiveMigration().build();
-
-
-    //        imageDetailsModelViewNIL.getAPODitems().observe(this, listDataWrapper -> Log.e(TAG, "Size "+listDataWrapper.getCollection().size() ));
-         //   imageDetailsModelViewNIL.getNILitems().observe(this, listDataWrapper -> Log.e(TAG, "Size +!"+listDataWrapper.getCollection().size() ));
-
-            // dropAllRecords();
-
-            //imageDetailsModelViewNIL.searchCacheAPOD(roomDatabase);
-       /*     imageDetailsModelViewNIL.saveImage(Constants.getARRAY().getCollection().get(0).toNILitem(),roomDatabase);
-            imageDetailsModelViewNIL.saveImage(Constants.getARRAY().getCollection().get(1).toNILitem(),roomDatabase);
-            imageDetailsModelViewNIL.saveImage(Constants.getARRAY().getCollection().get(2).toNILitem(),roomDatabase);
-            imageDetailsModelViewNIL.saveImage(Constants.getARRAY().getCollection().get(3).toNILitem(),roomDatabase);
-
-
-            imageDetailsModelViewNIL.saveImage(Constants.getARRAY_1().getCollection().get(0),roomDatabase);
-            imageDetailsModelViewNIL.saveImage(Constants.getARRAY_1().getCollection().get(1),roomDatabase);
-            imageDetailsModelViewNIL.saveImage(Constants.getARRAY_1().getCollection().get(2),roomDatabase);
-            imageDetailsModelViewNIL.saveImage(Constants.getARRAY_1().getCollection().get(3),roomDatabase);
-
-*/
-
-
-
-   //   redirectToImagesFragment();
+        redirectToCertainFragment(placeHolderfrgment,R.menu.empty_menu,getString(R.string.nasa_space_sight));
 
     }
 
 
+    @Deprecated
     void dropAllRecords()
     {
         RoomDatabase roomDatabase= Room.databaseBuilder(this,RoomDatabase.class,DB_NAME).allowMainThreadQueries().build();
@@ -157,12 +133,6 @@ public class MainActivity extends ThemedActivity  {
 
 
     }
-
-
-
-
-
-
     private void initFragmentManager()
     {
         fragmentManager=getSupportFragmentManager();
@@ -225,10 +195,6 @@ public class MainActivity extends ThemedActivity  {
         });
     }
 
-    private void redirectToFavoriteFragment()
-    {
-        redirectToCertainFragment(favoritesFragment,R.menu.fav_menu,getString(R.string.favorites));
-    }
 
     private void redirectToGithub()
     {
@@ -270,6 +236,11 @@ public class MainActivity extends ThemedActivity  {
     private void redirectToImagesFragment()
     {
         redirectToCertainFragment(resultsFragmentNIL,R.menu.images_menu,getString(R.string.images));
+        assignBackStackedFragment(resultsFragmentNIL);
+    }
+    void assignBackStackedFragment(IonBackPressed _backStackedFrag)
+    {
+        backStackedFrag=_backStackedFrag;
     }
 
 
@@ -300,5 +271,13 @@ public class MainActivity extends ThemedActivity  {
     }
 
 
+    public interface IonBackPressed
+    {
+        boolean onBackPressedI();
+
+    }
+
 
 }
+
+

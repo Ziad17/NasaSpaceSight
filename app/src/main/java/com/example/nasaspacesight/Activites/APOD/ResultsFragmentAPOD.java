@@ -2,48 +2,39 @@ package com.example.nasaspacesight.Activites.APOD;
 
 
 import android.content.Intent;
-import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+import androidx.room.Room;
 
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.MenuItem;
-import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.example.nasaspacesight.Activites.MainActivity;
 import com.example.nasaspacesight.Activites.NIL.ImageDetailsActivityNIL;
-import com.example.nasaspacesight.Activites.NIL.ResultsFragmentNIL;
 import com.example.nasaspacesight.Activites.ParentFragment;
 import com.example.nasaspacesight.Adapters.NormalImageRecyclerAdapterAPOD;
-import com.example.nasaspacesight.ApiData.APOD.ApodClientAPI;
-import com.example.nasaspacesight.POJO_APOD.SingleApodResponse;
-import com.example.nasaspacesight.POJO_NIL.Item;
+import com.example.nasaspacesight.PojoModels.POJO_APOD.SingleApodResponse;
+import com.example.nasaspacesight.PojoModels.Quiries.QueryAPOD;
 import com.example.nasaspacesight.R;
-import com.example.nasaspacesight.ViewModels.DataWrapper;
+import com.example.nasaspacesight.Room.RoomDatabase;
+import com.example.nasaspacesight.PojoModels.DataWrapper;
 import com.example.nasaspacesight.ViewModels.ItemListViewModelAPOD;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import static com.example.nasaspacesight.ApiData.APOD.ApodClientAPI.APOD_API_KEY;
 import static com.example.nasaspacesight.ApiData.APOD.ApodClientAPI.APOD_API_KEY_VALUE;
-import static com.example.nasaspacesight.ViewModels.DataWrapperStatus.FAILED;
-import static com.example.nasaspacesight.ViewModels.DataWrapperStatus.LOADING;
-import static com.example.nasaspacesight.ViewModels.DataWrapperStatus.SUCCESSED;
+import static com.example.nasaspacesight.Room.DatabaseInfo.DB_NAME;
+import static com.example.nasaspacesight.PojoModels.DataWrapperStatus.FAILED;
+import static com.example.nasaspacesight.PojoModels.DataWrapperStatus.LOADING;
+import static com.example.nasaspacesight.PojoModels.DataWrapperStatus.SUCCESSED;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -52,18 +43,15 @@ import static com.example.nasaspacesight.ViewModels.DataWrapperStatus.SUCCESSED;
 
  */
 
-public class ResultsFragmentAPOD extends ParentFragment {
+public class ResultsFragmentAPOD extends ParentFragment implements QueryHistoryOperationsAPOD, MainActivity.IonBackPressed {
 
     ItemListViewModelAPOD viewModel;
     SearchDialogAPOD searchDialogAPOD;
     private static final String TAG = "ResultsFragmentAPOD";
     NormalImageRecyclerAdapterAPOD adapter;
+    protected HistoryBottomSheetDialogAPOD historyBottomSheetDialog;
 
-
-
-
-
-
+    RoomDatabase db;
 
 
 
@@ -81,8 +69,8 @@ public class ResultsFragmentAPOD extends ParentFragment {
     @Override
     public void specificInit() {
         dataLoaded();
-       // searchWithTodayDate();
-        searchDialogAPOD.show();
+        
+        intiDb();
     }
 
     private void searchWithTodayDate()
@@ -104,6 +92,14 @@ public class ResultsFragmentAPOD extends ParentFragment {
     @Override
     public void subscribeToViewModel() {
         viewModel.getItems().observe(getViewLifecycleOwner(), (Observer<DataWrapper>) this::updateViews);
+        viewModel.getHistoryAPOD().observe(getViewLifecycleOwner(), listDataWrapper -> updateHistory(listDataWrapper.getCollection()));
+
+    }
+
+    private void updateHistory(List<QueryAPOD> collection)
+    {
+        historyBottomSheetDialog.updateList(collection);
+
     }
 
 
@@ -133,6 +129,12 @@ public class ResultsFragmentAPOD extends ParentFragment {
         } catch (Exception e) {
             dataFailed("Service or Network Error");
         }
+
+    }
+
+    @Override
+    public void initHistoryDialog() {
+        historyBottomSheetDialog = new HistoryBottomSheetDialogAPOD(null,this,getContext(), R.style.BottomSheetDialogTheme);
 
     }
 
@@ -179,18 +181,27 @@ public class ResultsFragmentAPOD extends ParentFragment {
                 case R.id.search:
                     searchDialogAPOD.show();
                     break;
+                case R.id.history:
+                    viewModel.searchHistoryAPOD(db);
+                    historyBottomSheetDialog.show();
+                    break;
             }
             return false;
         });
     }
 
 
+    private void intiDb() {
+        db= Room.databaseBuilder(getContext(), RoomDatabase.class,DB_NAME).fallbackToDestructiveMigration().build();
+    }
 
     @Override
     public void search(HashMap<String, Object> query) {
         try {
             dataLoading();
-            lastQuery = query;
+            lastQuery.add(query);
+            viewModel.insertHistoryAPOD(new QueryAPOD(lastQuery.peek()), db);
+
             viewModel.searchForImages(query);
         } catch (Exception e) {
             dataFailed("Service or Network Error");
@@ -198,4 +209,44 @@ public class ResultsFragmentAPOD extends ParentFragment {
     }
 
 
+    @Override
+    public void onHistoryDeleted(QueryAPOD queryAPOD)
+
+    {
+
+        viewModel.deleteHistoryAPOD(queryAPOD,db);
+        Toast.makeText(getContext(), "Deleted", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onHistoryClicked(QueryAPOD queryAPOD) {
+        Toast.makeText(getContext(), queryAPOD.toString(), Toast.LENGTH_LONG).show();
+
+    }
+
+    @Override
+    public void onHistorySearch(QueryAPOD queryNIL) {
+        historyBottomSheetDialog.hide();
+
+
+        dataLoading();
+        viewModel.searchForImages(queryNIL.toMap());
+
+    }
+
+
+    @Override
+    public boolean onBackPressedI() {
+        try {
+            if(lastQuery.size()==1)
+            {return true;}
+            lastQuery.pop();
+            dataLoading();
+            viewModel.searchForImages(lastQuery.peek());
+            return false;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return true;
+        }
+    }
 }

@@ -1,4 +1,4 @@
-package com.example.nasaspacesight.POJO_NIL;
+package com.example.nasaspacesight.PojoModels.POJO_NIL;
 
 import android.os.Parcel;
 
@@ -9,7 +9,6 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
-import static com.example.nasaspacesight.Room.DatabaseInfo.NilTable.NIL_OBJECT_DATA;
 import static com.example.nasaspacesight.Room.DatabaseInfo.NilTable.NIL_OBJECT_DATA_CENTER;
 import static com.example.nasaspacesight.Room.DatabaseInfo.NilTable.NIL_OBJECT_DATA_DATE_CREATED;
 import static com.example.nasaspacesight.Room.DatabaseInfo.NilTable.NIL_OBJECT_DATA_DESCRIPTION;

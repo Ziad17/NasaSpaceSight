@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="20dp"
+    android:id="@+id/query_nil_main"
+    android:padding="5dp"
+    android:layout_marginStart="20dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="Query_TAge"
+        android:fontFamily="sans-serif"
+        android:id="@+id/nil_query_tag"
+        android:textSize="15sp"
+        android:layout_width="wrap_content"/>
+
+    <TextView android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="2020-9-19 20:29:08"
+        android:textColor="#505050"
+        android:id="@+id/search_date"
+        app:layout_constraintTop_toBottomOf="@id/nil_query_tag"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:src="@drawable/ic_baseline_delete_24"
+        android:tint="#000"
+        android:id="@+id/delete"
+        android:background="@color/Transpert"
+        />
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@id/delete"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:src="@drawable/ic_baseline_send_24"
+        android:tint="#000"
+        android:id="@+id/go"
+        android:background="@color/Transpert"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

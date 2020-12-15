@@ -1,5 +1,7 @@
 package com.example.nasaspacesight.ApiData.EPIC;
 
+@Deprecated
+
 public interface EpicClientAPI
 {
     //TODO: Construct query parameter

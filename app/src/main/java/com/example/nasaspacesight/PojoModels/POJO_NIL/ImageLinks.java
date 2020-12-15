@@ -1,10 +1,6 @@
-package com.example.nasaspacesight.POJO_NIL;
-
-import android.util.Log;
+package com.example.nasaspacesight.PojoModels.POJO_NIL;
 
 import java.util.ArrayList;
-
-import static androidx.constraintlayout.widget.Constraints.TAG;
 
 /****
  * TODO: this class absolutely needs to be refactored but it will do just fine for now :)

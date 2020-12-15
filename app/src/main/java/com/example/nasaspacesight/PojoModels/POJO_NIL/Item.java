@@ -1,7 +1,6 @@
-package com.example.nasaspacesight.POJO_NIL;
+package com.example.nasaspacesight.PojoModels.POJO_NIL;
 
 import android.os.Parcel;
-import android.os.Parcelable;
 
 
 import com.google.gson.annotations.Expose;

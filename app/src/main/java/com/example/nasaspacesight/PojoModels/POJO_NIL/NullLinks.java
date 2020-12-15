@@ -1,4 +1,4 @@
-package com.example.nasaspacesight.POJO_NIL;
+package com.example.nasaspacesight.PojoModels.POJO_NIL;
 
 import java.util.ArrayList;
 

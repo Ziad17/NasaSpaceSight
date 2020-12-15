@@ -18,15 +18,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.nasaspacesight.Activites.NIL.SearchableFragment;
 import com.example.nasaspacesight.Adapters.NormalImageRecycleAdapterNIL;
 import com.example.nasaspacesight.R;
-import com.example.nasaspacesight.ViewModels.DataWrapper;
-import com.google.android.material.button.MaterialButton;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.example.nasaspacesight.PojoModels.DataWrapper;
 
 import java.util.HashMap;
+import java.util.Stack;
 
 public abstract class ParentFragment extends Fragment implements SearchableFragment,ContextWithInitiativeBehavior, NormalImageRecycleAdapterNIL.OnImageClickLisetenr {
 
-    protected HashMap<String, Object> lastQuery;
+    protected Stack<HashMap<String, Object>> lastQuery;
     protected LinearLayout mainProgressBar;
     protected ScrollView mainLinearLayout;
     protected RecyclerView resultsRecyclerView;
@@ -59,6 +58,7 @@ public abstract class ParentFragment extends Fragment implements SearchableFragm
     public abstract void initRecyclerAdapter();
     public abstract void initRecyclerView();
     public abstract void updateViews(DataWrapper dataWrapper);
+    public abstract void initHistoryDialog();
 
 
     public abstract void initSearchDialog();
@@ -78,11 +78,18 @@ public abstract class ParentFragment extends Fragment implements SearchableFragm
         BindView();
         initViewModel();
         subscribeToViewModel();
+        initStack();
         initRecyclerAdapter();
         initRecyclerView();
         initSearchDialog();
         initMenuOptions();
+        initHistoryDialog();
         specificInit();
+    }
+
+    protected  void initStack()
+    {
+        lastQuery=new Stack<>();
     }
 
 

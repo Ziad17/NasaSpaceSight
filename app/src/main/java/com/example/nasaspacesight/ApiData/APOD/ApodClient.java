@@ -5,12 +5,11 @@ import android.util.Log;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.nasaspacesight.Executors.AppExecutors;
-import com.example.nasaspacesight.POJO_APOD.SingleApodResponse;
+import com.example.nasaspacesight.PojoModels.POJO_APOD.SingleApodResponse;
 import com.example.nasaspacesight.Util.Constants;
-import com.example.nasaspacesight.ViewModels.DataWrapper;
-import com.example.nasaspacesight.ViewModels.DataWrapperStatus;
+import com.example.nasaspacesight.PojoModels.DataWrapper;
+import com.example.nasaspacesight.PojoModels.DataWrapperStatus;
 
-import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.Future;
@@ -18,14 +17,14 @@ import java.util.concurrent.TimeUnit;
 
 import retrofit2.Response;
 
-import static androidx.constraintlayout.widget.Constraints.TAG;
 import static com.example.nasaspacesight.Util.Constants.HTTP_OK_CODE;
-import static com.example.nasaspacesight.ViewModels.DataWrapperStatus.FAILED;
-import static com.example.nasaspacesight.ViewModels.DataWrapperStatus.LOADING;
-import static com.example.nasaspacesight.ViewModels.DataWrapperStatus.SUCCESSED;
+import static com.example.nasaspacesight.PojoModels.DataWrapperStatus.FAILED;
+import static com.example.nasaspacesight.PojoModels.DataWrapperStatus.LOADING;
+import static com.example.nasaspacesight.PojoModels.DataWrapperStatus.SUCCESSED;
 
 public class ApodClient {
 
+    private static final String TAG = "Sssss";
     private static volatile ApodClient instance;
 
     public MutableLiveData<DataWrapper<List<SingleApodResponse>>> getItems() {
@@ -82,6 +81,7 @@ public class ApodClient {
 
             } catch (Exception e) {
                 items.postValue(new DataWrapper<>(items.getValue().getCollection(), FAILED, "Connection Is Down"));
+                Log.e(TAG, "searchForImages: ",e );
             }
         });
 

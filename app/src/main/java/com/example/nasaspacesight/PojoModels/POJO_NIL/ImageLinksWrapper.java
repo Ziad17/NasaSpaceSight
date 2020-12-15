@@ -1,6 +1,6 @@
-package com.example.nasaspacesight.POJO_NIL;
+package com.example.nasaspacesight.PojoModels.POJO_NIL;
 
-import com.example.nasaspacesight.ViewModels.DataWrapperStatus;
+import com.example.nasaspacesight.PojoModels.DataWrapperStatus;
 
 public class ImageLinksWrapper extends DataWrapperStatus {
     private ImageLinks imageLinks;

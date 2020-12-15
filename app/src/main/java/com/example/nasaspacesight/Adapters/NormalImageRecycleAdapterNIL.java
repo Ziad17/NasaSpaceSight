@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
-import com.example.nasaspacesight.POJO_NIL.Item;
+import com.example.nasaspacesight.PojoModels.POJO_NIL.Item;
 import com.example.nasaspacesight.R;
 
 import java.util.ArrayList;

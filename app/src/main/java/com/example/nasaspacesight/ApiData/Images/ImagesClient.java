@@ -1,18 +1,20 @@
 package com.example.nasaspacesight.ApiData.Images;
 
 
+import android.util.Log;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.nasaspacesight.Executors.AppExecutors;
-import com.example.nasaspacesight.POJO_NIL.Collection;
-import com.example.nasaspacesight.POJO_NIL.FullApiResponse;
-import com.example.nasaspacesight.POJO_NIL.ImageLinks;
-import com.example.nasaspacesight.ViewModels.DataWrapper;
+import com.example.nasaspacesight.PojoModels.POJO_NIL.Collection;
+import com.example.nasaspacesight.PojoModels.POJO_NIL.FullApiResponse;
+import com.example.nasaspacesight.PojoModels.POJO_NIL.ImageLinks;
+import com.example.nasaspacesight.PojoModels.DataWrapper;
 
-import com.example.nasaspacesight.POJO_NIL.NullLinks;
+import com.example.nasaspacesight.PojoModels.POJO_NIL.NullLinks;
 import com.example.nasaspacesight.Util.Constants;
-import com.example.nasaspacesight.ViewModels.DataWrapperStatus;
+import com.example.nasaspacesight.PojoModels.DataWrapperStatus;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -22,9 +24,9 @@ import java.util.concurrent.TimeUnit;
 
 import retrofit2.Response;
 
-import static com.example.nasaspacesight.ViewModels.DataWrapperStatus.FAILED;
+import static com.example.nasaspacesight.PojoModels.DataWrapperStatus.FAILED;
 import static com.example.nasaspacesight.Util.Constants.HTTP_OK_CODE;
-import static com.example.nasaspacesight.ViewModels.DataWrapperStatus.SUCCESSED;
+import static com.example.nasaspacesight.PojoModels.DataWrapperStatus.SUCCESSED;
 
 public class ImagesClient {
     private static volatile ImagesClient imagesClient;
@@ -58,8 +60,11 @@ public class ImagesClient {
     }
 
     public void SearchForImages(final Map<String,Object> map) {
+
+        Log.e(TAG, "SearchForImages: "+map.toString() );
         final Future handler = AppExecutors.getInstance().getworkIO().submit(() -> {
                 try {
+
                     boolean CANCELED=false;
                     Response response = ImageResources.getInstance().connect().Search(map).execute();
                     if (CANCELED) {
@@ -73,6 +78,7 @@ public class ImagesClient {
                     }
 
                 } catch (IOException e) {
+                    Log.e(TAG, "SearchForImages: ",e );
                     Items.postValue(new DataWrapper<>(Items.getValue().getCollection(),FAILED,"Connection Is Down"));
                 }
 

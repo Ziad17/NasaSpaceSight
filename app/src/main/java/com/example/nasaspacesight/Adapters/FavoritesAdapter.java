@@ -10,6 +10,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
+@Deprecated
 public class FavoritesAdapter extends FragmentPagerAdapter {
 
     List<Fragment> fragments;

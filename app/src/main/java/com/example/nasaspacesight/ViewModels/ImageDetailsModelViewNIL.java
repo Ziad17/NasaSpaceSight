@@ -3,11 +3,12 @@ package com.example.nasaspacesight.ViewModels;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.example.nasaspacesight.POJO_APOD.SingleApodResponse;
-import com.example.nasaspacesight.POJO_NIL.Collection;
-import com.example.nasaspacesight.POJO_NIL.ImageLinks;
-import com.example.nasaspacesight.POJO_NIL.Item;
-import com.example.nasaspacesight.POJO_NIL.ItemOffline;
+import com.example.nasaspacesight.PojoModels.DataWrapper;
+import com.example.nasaspacesight.PojoModels.POJO_APOD.SingleApodResponse;
+import com.example.nasaspacesight.PojoModels.POJO_NIL.Collection;
+import com.example.nasaspacesight.PojoModels.POJO_NIL.ImageLinks;
+import com.example.nasaspacesight.PojoModels.POJO_NIL.Item;
+import com.example.nasaspacesight.PojoModels.POJO_NIL.ItemOffline;
 import com.example.nasaspacesight.Repository.MainImageSearchRepo;
 import com.example.nasaspacesight.Room.RoomDatabase;
 

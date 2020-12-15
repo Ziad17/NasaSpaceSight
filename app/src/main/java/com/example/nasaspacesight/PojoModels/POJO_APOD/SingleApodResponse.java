@@ -1,9 +1,8 @@
 
-package com.example.nasaspacesight.POJO_APOD;
+package com.example.nasaspacesight.PojoModels.POJO_APOD;
 
 
 import android.os.Parcel;
-import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
@@ -11,7 +10,6 @@ import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
-import com.example.nasaspacesight.Room.DatabaseInfo;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;

@@ -232,6 +232,8 @@ public class SearchDialogNIL extends Dialog implements ContextWithInitiativeBeha
         searchHashMap.put(ImagesClientAPI.NIL_PHOTOGRAPHER,photographerEditText.getText().toString().trim());
         searchHashMap.put(ImagesClientAPI.NIL_KEY_WORDS,keyWordsEditText.getText().toString().trim());
         searchHashMap.put(ImagesClientAPI.NIL_PAGE_NUMBER,1);
+        searchHashMap.put(ImagesClientAPI.NIL_MEDIA_TYPE,"image");
+
         if (DATE_SEARCH_ENABLED) {
             searchHashMap.put(ImagesClientAPI.NIL_END_YEAR,Integer.valueOf(endYearSpinner.getSelectedItem().toString().trim()));
             searchHashMap.put(ImagesClientAPI.NIL_END_YEAR,Integer.valueOf(startYearSpinner.getSelectedItem().toString().trim()));
