@@ -1,7 +1,8 @@
 # NasaSpaceSight
 Android application written in java that represents the free NASA image API to view and download images 
 
-
+# For Testing and building
+just download and install the apk file provided in the repo (https://github.com/Ziad17/NasaSpaceSight/blob/master/app-debug.apk) on your android device
 
 
 
