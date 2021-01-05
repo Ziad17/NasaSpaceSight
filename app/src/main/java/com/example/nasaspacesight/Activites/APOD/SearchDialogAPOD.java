@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,6 +40,7 @@ public class SearchDialogAPOD extends Dialog implements ContextWithInitiativeBeh
     MaterialRadioButton multiSearchRadioButton;
     TextView startDateEditText;
     TextView endDateEditText;
+    RadioGroup radioGroup;
 
     TextInputLayout startDateEditTextParent;
     TextInputLayout endDateEditTextParent;
@@ -55,6 +58,7 @@ public class SearchDialogAPOD extends Dialog implements ContextWithInitiativeBeh
         endDateEditTextParent=findViewById(R.id.end_date_picker_parent);
         startDateEditTextParent=findViewById(R.id.start_date_picker_parent);
 
+        radioGroup=findViewById(R.id.search_radio_group);
     }
 
 
@@ -79,6 +83,10 @@ public class SearchDialogAPOD extends Dialog implements ContextWithInitiativeBeh
         setContentView(R.layout.fragment_search_apod);
         getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
 
+
+
+
+        init();
 
     }
 
@@ -131,10 +139,20 @@ public class SearchDialogAPOD extends Dialog implements ContextWithInitiativeBeh
     }
 
     private void initRadioListeners() {
+
+        radioGroup.setOnCheckedChangeListener((radioGroup, i) -> {
+            if(radioGroup.getCheckedRadioButtonId()==singleSearchRadioButton.getId())
+            {
+                hideMultiSearch(true);
+
+            }
+            else if(radioGroup.getCheckedRadioButtonId()==multiSearchRadioButton.getId())
+            {
+                hideMultiSearch(false);
+            }
+        });
         singleSearchRadioButton.setChecked(true);
-        hideMultiSearch(false);
-        multiSearchRadioButton.setOnCheckedChangeListener((compoundButton, b) -> hideMultiSearch(!b));
-        multiSearchRadioButton.setOnCheckedChangeListener((compoundButton, b) -> hideMultiSearch(b));
+//hideMultiSearch(true);
     }
 
 
@@ -194,7 +212,7 @@ public class SearchDialogAPOD extends Dialog implements ContextWithInitiativeBeh
 
 
     void hideMultiSearch(boolean isHidden) {
-        if (!isHidden) {
+        if (isHidden) {
             MULTI_SEARCH = false;
             endDateEditTextParent.setVisibility(View.GONE);
             return;

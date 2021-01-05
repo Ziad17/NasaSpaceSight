@@ -69,7 +69,7 @@ public class ResultsFragmentAPOD extends ParentFragment implements QueryHistoryO
     @Override
     public void specificInit() {
         dataLoaded();
-        
+        searchWithTodayDate();
         intiDb();
     }
 
